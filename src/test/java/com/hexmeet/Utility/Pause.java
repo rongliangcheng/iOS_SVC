@@ -1,9 +1,9 @@
 package com.hexmeet.Utility;
 
 public class Pause {
-    public static void sleep(int second){
+    public static void stop(double second){
         try{
-            Thread.sleep(1000 * second);
+            Thread.sleep((long)(1000 * second));
         } catch (Exception e){
             e.printStackTrace();
         }

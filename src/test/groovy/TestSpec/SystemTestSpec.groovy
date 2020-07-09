@@ -1,8 +1,7 @@
-package com.hexmeet.base
+package TestSpec
 
-import com.hexmeet.Utility.LogUtils
+
 import com.hexmeet.Utility.Pause
-import com.hexmeet.appiumendpoint.AppiumEndpoint
 import io.appium.java_client.AppiumDriver
 import org.apache.commons.io.FileUtils
 import org.openqa.selenium.OutputType
@@ -65,10 +64,16 @@ class SystemTestSpec extends Specification{
         //LOGGER.info(LogUtils.imageHtml(filePath));
     }
 
-    def showPicInReport(AppiumDriver appiumDriver){
+    def showPicInReport(AppiumDriver appiumDriver,String string){
         String pic = captureScreenShot(appiumDriver);
-        Pause.sleep(3);
-        reportInfo " show pictures <img src=\"${pic}\" width=\"320\" height=\"180\" /> "
+        Pause.sleep(1);
+        reportInfo string+" <img src=\"${pic}\" width=\"380\" height=\"180\" /> "
+    }
+
+    def showPicInReportortrait(AppiumDriver appiumDriver,String string){
+        String pic = captureScreenShot(appiumDriver);
+        Pause.sleep(1);
+        reportInfo string+" <img src=\"${pic}\" width=\"180\" height=\"380\" /> "
     }
 
 }

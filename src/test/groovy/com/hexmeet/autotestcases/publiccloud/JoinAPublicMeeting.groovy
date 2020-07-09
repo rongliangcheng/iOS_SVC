@@ -3,9 +3,9 @@ package com.hexmeet.autotestcases.publiccloud
 import com.hexmeet.Utility.Pause
 
 import com.hexmeet.appiumendpoint.AppiumEndpoint
-import com.hexmeet.base.EndpointSystemTestSpec
-import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicpage.joinmeeting.PublicJoinMeeting
-import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicpage.joinmeeting.meetingoperations.MeetingOperations
+import TestSpec.EndpointSystemTestSpec
+import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage.joinmeeting.PublicJoinMeeting
+import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage.joinmeeting.meetingoperations.MeetingOperations
 import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -28,10 +28,10 @@ class JoinAPublicMeeting extends EndpointSystemTestSpec{
     def setupSpec(){
 
         LOGGER.info("Setup")
-        androidEndpoint.initialAppiumEndpoint("Android_1")
+        androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
         driver = androidEndpoint.getAppiumEndpointDriver()
-        androidEndpoint.initialAppiumEndpoint("Android_1")
+
     }
 
     def cleanupSpec(){

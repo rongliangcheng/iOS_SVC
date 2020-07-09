@@ -19,14 +19,14 @@ public class DeploymentTypePage {
 
 
     public void privateCloudDeployment() {
-         Pause.sleep(1);
+         Pause.stop(1);
 
          //Choose private cloud deployment
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.ImageView[1]\n").click();
     }
 
     public void publicCloudUser(){
-        Pause.sleep(1);
+        Pause.stop(1);
 
         //Choose public cloud deployment
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.ImageView[2]").click();

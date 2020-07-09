@@ -7,20 +7,18 @@ public class UICommon {
 
 
     public static void devicePermissionAllowance(final AppiumDriver appiumDriver) {
-        Pause.sleep(1);
-        //appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.Button[1]\n").click();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Button[2]").click();
+        Pause.stop(1);
 
-        Pause.sleep(1);
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Button[2]").click();
-
-        Pause.sleep(1);
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Button[2]").click();
+        appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        Pause.stop(1);
+        appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        Pause.stop(1);
+        appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
     }
 
     //Used to check the wrong input password operation
-    public boolean detectToast(final AppiumDriver appiumDriver){
-        Pause.sleep(1);
+    public static boolean detectToast(final AppiumDriver appiumDriver){
+        Pause.stop(1);
         if(appiumDriver.findElementByXPath("/hierarchy/android.widget.Toast") != null)
             return true;
 

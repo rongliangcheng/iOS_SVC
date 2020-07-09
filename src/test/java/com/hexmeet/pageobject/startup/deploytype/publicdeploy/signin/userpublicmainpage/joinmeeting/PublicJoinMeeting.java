@@ -1,8 +1,8 @@
-package com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicpage.joinmeeting;
+package com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage.joinmeeting;
 
 import io.appium.java_client.AppiumDriver;
 import com.hexmeet.Utility.Pause;
-import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicpage.UserLogonPage;
+import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage.UserPublicMainPage;
 
 
 public class PublicJoinMeeting {
@@ -15,9 +15,9 @@ public class PublicJoinMeeting {
 
     public void navigate(String account,String password){
 
-        UserLogonPage userLogonPage = new UserLogonPage(appiumDriver);
-        userLogonPage.navigate("rongliang","rongliang");
-        userLogonPage.joinAConference();
+        UserPublicMainPage userPublicMainPage = new UserPublicMainPage(appiumDriver);
+        userPublicMainPage.navigate("rongliang","rongliang");
+        userPublicMainPage.joinAConference();
     }
 
     public void joinButton(){
@@ -36,7 +36,7 @@ public class PublicJoinMeeting {
     }
 
     public void dailNumber(int num){
-        Pause.sleep(1);
+        Pause.stop(1);
         if( num > 9 || num < 0){
             System.out.println("###"+num+"### wrong number is input");
         }

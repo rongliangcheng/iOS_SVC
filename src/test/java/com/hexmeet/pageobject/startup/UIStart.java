@@ -13,9 +13,9 @@ public class UIStart {
     public  void startUp() {
         appiumDriver.findElementById("com.hexmeet.hjt:id/dialog_ok").click();
 
-        Pause.sleep(1);
+        Pause.stop(1);
 
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Button[2]").click();
+        appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
     }
 
 }

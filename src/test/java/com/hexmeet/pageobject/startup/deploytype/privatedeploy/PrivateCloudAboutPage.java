@@ -13,7 +13,7 @@ public class PrivateCloudAboutPage {
 
 
     public String getVersion(final AppiumDriver appiumDriver){
-        Pause.sleep(1);
+        Pause.stop(1);
 
         //Get verson info
         return appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.TextView[2]").getText();

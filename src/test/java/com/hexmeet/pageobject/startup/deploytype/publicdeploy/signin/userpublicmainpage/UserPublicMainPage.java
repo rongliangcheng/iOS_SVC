@@ -1,13 +1,14 @@
-package com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicpage;
+package com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage;
 
+import com.hexmeet.Utility.Pause;
 import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.PublicSignIn;
 import io.appium.java_client.AppiumDriver;
 
-public class UserLogonPage {
+public class UserPublicMainPage {
 
     final private AppiumDriver appiumDriver;
 
-    public UserLogonPage(final AppiumDriver appiumDriver){
+    public UserPublicMainPage(final AppiumDriver appiumDriver){
         this.appiumDriver = appiumDriver;
     }
 
@@ -20,23 +21,27 @@ public class UserLogonPage {
     }
 
     public void meeting(){
+        Pause.stop(0.5);
         appiumDriver.findElementByXPath(
                 "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.TextView[1]")
                 .click();
     }
 
     public void joinAConference(){
+        Pause.stop(0.5);
         appiumDriver.findElementByXPath(
                 "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.TextView[2]")
                 .click();
     }
 
     public void contacts(){
+        Pause.stop(0.5);
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.TextView[3]")
                 .click();
     }
 
-    public void self(){
+    public void aboutMe(){
+        Pause.stop(0.5);
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.TextView[4]")
                 .click();
     }

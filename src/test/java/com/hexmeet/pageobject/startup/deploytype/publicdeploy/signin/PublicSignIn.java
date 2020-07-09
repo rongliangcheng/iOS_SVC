@@ -20,25 +20,30 @@ public class PublicSignIn {
     }
 
     public void fillInAccount(String account){
-        Pause.sleep(1);
+        Pause.stop(1);
 
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[1]").clear();
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[1]").sendKeys(account);
+
     }
 
     public void fillInPassword(String password){
-        Pause.sleep(1);
-
-        appiumDriver.findElementByXPath("\t\n" +
-                "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[2]").sendKeys(password);
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[2]").clear();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[2]").sendKeys(password);
     }
 
     public void signIn(){
-        Pause.sleep(1);
-        appiumDriver.findElementByXPath("\t\n" +
-                "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.Button").click();
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.Button").click();
 
-        Pause.sleep(10);
+        Pause.stop(3);
         UICommon.devicePermissionAllowance(appiumDriver);
+    }
+
+    public void signInWithWrongUsernamePassword(){
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.Button").click();
     }
 
 }

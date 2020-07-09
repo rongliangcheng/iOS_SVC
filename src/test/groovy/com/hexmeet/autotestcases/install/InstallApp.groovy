@@ -1,9 +1,8 @@
 package com.hexmeet.autotestcases.install
 
 import com.hexmeet.appiumendpoint.AppiumEndpoint
-import com.hexmeet.base.EndpointSystemTestSpec
+import TestSpec.EndpointSystemTestSpec
 import com.hexmeet.base.JsonConfigSingleton
-import com.hexmeet.pageobject.UICommon
 import com.hexmeet.pageobject.startup.UIStart
 import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger
