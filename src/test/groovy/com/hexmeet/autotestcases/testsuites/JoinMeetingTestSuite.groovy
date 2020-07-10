@@ -1,14 +1,17 @@
 package com.hexmeet.autotestcases.testsuites
 
-
-import com.hexmeet.autotestcases.publiccloud.JoinAPublicMeeting
+import com.hexmeet.autotestcases.login.Login
+import com.hexmeet.autotestcases.publiccloud.JoinAReserveMeeting
+import com.hexmeet.autotestcases.publiccloud.OperateInAReservedMeeting
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses([
-        JoinAPublicMeeting
+        Login,
+        JoinAReserveMeeting,
+        OperateInAReservedMeeting
 ])
 class JoinMeetingTestSuite {
 }

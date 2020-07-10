@@ -68,3 +68,19 @@ task testGroupOne(type: Test) {
 //    reports.junitXml.destination = "$buildDir/test-results/SuiteOne")
 //    reports.html.destination = "$buildDir/testreport/LoginTestSuite"
 }
+
+
+task testGroupTwo(type: Test) {
+    //include '**/*SuiteOne.*'
+
+    filter {
+        include '**/JoinMeetingTestSuite.class'
+    }
+
+    testLogging {
+        // Show that tests are run in the command-line output
+        events 'started', 'passed'
+    }
+//    reports.junitXml.destination = "$buildDir/test-results/SuiteOne")
+//    reports.html.destination = "$buildDir/testreport/LoginTestSuite"
+}
