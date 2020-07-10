@@ -101,6 +101,8 @@ class Login extends EndpointSystemTestSpec{
             Pause.stop(1.5)
         }
 
+        Pause.stop(5)
+
         then:"quit"
         assert true
     }
