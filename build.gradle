@@ -44,24 +44,27 @@ task collectJars(type: Copy) {
     from configurations.testRuntime
 }
 
-test {
-//    useJUnitPlatform()
-
-    include "com.hexmeet.autotestcases.testsuites.LoginTestSuite"
-
-    testLogging {
-        events   "started","passed", "skipped", "failed"
-    }
-}
-
-//task testGroupOne(type: Test) {
-//    //include '**/*SuiteOne.*'
-//    include '**/LoginTestSuite.class'
+//test {
+////    useJUnitPlatform()
+//
+//    include "com.hexmeet.autotestcases.testsuites.LoginTestSuite"
 //
 //    testLogging {
-//        // Show that tests are run in the command-line output
-//        events 'started', 'passed'
+//        events   "started","passed", "skipped", "failed"
 //    }
-////    reports.junitXml.destination = "$buildDir/test-results/SuiteOne")
-////    reports.html.destination = "$buildDir/testreport/LoginTestSuite"
 //}
+
+task testGroupOne(type: Test) {
+    //include '**/*SuiteOne.*'
+
+    filter {
+        include '**/LoginTestSuite.class'
+    }
+
+    testLogging {
+        // Show that tests are run in the command-line output
+        events 'started', 'passed'
+    }
+//    reports.junitXml.destination = "$buildDir/test-results/SuiteOne")
+//    reports.html.destination = "$buildDir/testreport/LoginTestSuite"
+}

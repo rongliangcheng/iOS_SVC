@@ -98,7 +98,7 @@ class Login extends EndpointSystemTestSpec{
             publicSignIn.signInWithWrongUsernamePassword()
             UICommon.detectToast(driver)
             showPicInReportortrait(driver,"Toast")
-            Pause.stop(3)
+            Pause.stop(1.5)
         }
 
         then:"quit"
