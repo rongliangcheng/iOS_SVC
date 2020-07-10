@@ -11,8 +11,8 @@ import org.junit.runners.Suite
 @RunWith(Suite.class)
 @Suite.SuiteClasses([
         Login,
-        JoinAReserveMeeting,
-        OperateInAReservedMeeting
+//        JoinAReserveMeeting,
+//        OperateInAReservedMeeting
 ])
 
 class LoginTestSuite {
