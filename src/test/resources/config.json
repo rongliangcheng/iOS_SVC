@@ -1,12 +1,13 @@
 {
-  "Android_1":{
+  "Android_1": {
     "platformName": "Android",
     "platformVersion": "8.1.0",
     "deviceName": "9245f019",
     "appPackage": "com.hexmeet.hjt",
     "appActivity": ".SplashActivity",
     "skipServerInstallation": true,
-    "skipDeviceInitialization":true
+    "skipDeviceInitialization":true,
+    "newCommandTimeout":30
   },
   "iOS_1":{
     "platformName": "iOS",
