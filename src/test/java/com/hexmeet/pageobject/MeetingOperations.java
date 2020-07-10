@@ -7,7 +7,6 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.Point;
 
-import static TestSpec.SystemTestSpec.LOGGER;
 import static org.openqa.selenium.By.id;
 
 public class MeetingOperations {

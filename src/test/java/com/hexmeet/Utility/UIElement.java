@@ -7,8 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-import static TestSpec.SystemTestSpec.LOGGER;
-
 public class UIElement {
 
     public static boolean byElementIsExist(AppiumDriver appiumDriver, By by) {
