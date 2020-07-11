@@ -83,50 +83,50 @@ class Login extends EndpointSystemTestSpec{
         assert true
     }
 
-    def "Login hjt with wrong password"(){
-
-        when: "Sign in with wrong password 5 times, it will lock the user for 5 minutes"
-        androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
-        driver = androidEndpoint.getAppiumEndpointDriver()
-        PublicSignIn publicSignIn = new PublicSignIn(driver);
-        publicSignIn.navigate()
-        5.times {
-            LOGGER.info("Fill in wrong password")
-            publicSignIn.fillInAccount("rongliang")
-            publicSignIn.fillInPassword("rongl")
-            publicSignIn.signInWithWrongUsernamePassword()
-            UICommon.detectToast(driver)
-            showPicInReportortrait(driver,"Toast")
-            Pause.stop(1.5)
-        }
-
-        Pause.stop(5)
-
-        then:"quit"
-        assert true
-    }
-
-    def "Login hjt System successfully after 5 minutes"(){
-
-
-        when:"Sign in the public cloud with correct password"
-        LOGGER.info("Sleep 5 minutes")
-        Pause.stop(300)
-        LOGGER.info("5 minutes over")
-        androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)
-        driver = androidEndpoint.getAppiumEndpointDriver()
-        PublicSignIn publicSignIn = new PublicSignIn(driver);
-        publicSignIn.navigate()
-        publicSignIn.fillInAccount("rongliang")
-        publicSignIn.fillInPassword("rongliang")
-        publicSignIn.signIn()
-        showPicInReportortrait(driver,"Sign in")
-
-        then:"sign in successfully"
-        assert true
-
-    }
+//    def "Login hjt with wrong password"(){
+//
+//        when: "Sign in with wrong password 5 times, it will lock the user for 5 minutes"
+//        androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
+//        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+//        driver = androidEndpoint.getAppiumEndpointDriver()
+//        PublicSignIn publicSignIn = new PublicSignIn(driver);
+//        publicSignIn.navigate()
+//        5.times {
+//            LOGGER.info("Fill in wrong password")
+//            publicSignIn.fillInAccount("rongliang")
+//            publicSignIn.fillInPassword("rongl")
+//            publicSignIn.signInWithWrongUsernamePassword()
+//            UICommon.detectToast(driver)
+//            showPicInReportortrait(driver,"Toast")
+//            Pause.stop(1.5)
+//        }
+//
+//        Pause.stop(5)
+//
+//        then:"quit"
+//        assert true
+//    }
+//
+//    def "Login hjt System successfully after 5 minutes"(){
+//
+//
+//        when:"Sign in the public cloud with correct password"
+//        LOGGER.info("Sleep 5 minutes")
+//        Pause.stop(300)
+//        LOGGER.info("5 minutes over")
+//        androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
+//        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)
+//        driver = androidEndpoint.getAppiumEndpointDriver()
+//        PublicSignIn publicSignIn = new PublicSignIn(driver);
+//        publicSignIn.navigate()
+//        publicSignIn.fillInAccount("rongliang")
+//        publicSignIn.fillInPassword("rongliang")
+//        publicSignIn.signIn()
+//        showPicInReportortrait(driver,"Sign in")
+//
+//        then:"sign in successfully"
+//        assert true
+//
+//    }
 
 }
