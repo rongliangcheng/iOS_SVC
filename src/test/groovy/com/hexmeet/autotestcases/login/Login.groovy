@@ -78,7 +78,6 @@ class Login extends EndpointSystemTestSpec{
             Pause.stop(1)
         }
 
-
         then:"quit"
         assert true
     }
