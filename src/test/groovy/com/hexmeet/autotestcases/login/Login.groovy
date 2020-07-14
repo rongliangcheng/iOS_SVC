@@ -3,7 +3,7 @@ package com.hexmeet.autotestcases.login
 import com.hexmeet.Utility.Pause
 import com.hexmeet.appiumendpoint.AppiumEndpoint
 import TestSpec.EndpointSystemTestSpec
-import com.hexmeet.pageobject.UICommon
+import com.hexmeet.pageobject.common.UICommon
 import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.PublicSignIn
 import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger

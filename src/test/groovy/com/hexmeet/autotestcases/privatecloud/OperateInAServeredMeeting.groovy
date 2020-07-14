@@ -1,11 +1,11 @@
-package com.hexmeet.autotestcases.publiccloud
+package com.hexmeet.autotestcases.privatecloud
 
 import TestSpec.EndpointSystemTestSpec
 import com.hexmeet.Utility.Pause
 import com.hexmeet.appiumendpoint.AppiumEndpoint
 import com.hexmeet.pageobject.common.MeetingOperations
 import com.hexmeet.pageobject.common.ReserveMeetingPage
-import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage.publicmeeting.PublicMeeting
+import com.hexmeet.pageobject.startup.deploytype.privatedeploy.signin.SignInPage
 import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -13,7 +13,7 @@ import spock.lang.Shared
 
 import java.util.concurrent.TimeUnit
 
-class OperateInAReservedMeeting extends EndpointSystemTestSpec {
+class OperateInAServeredMeeting extends EndpointSystemTestSpec{
 
     @Shared
     AppiumDriver appiumDriver;
@@ -28,34 +28,35 @@ class OperateInAReservedMeeting extends EndpointSystemTestSpec {
     ReserveMeetingPage reserveMeetingPage
 
     @Shared
-    MeetingOperations meetingOperations
-    @Shared
-    String username="rongliang"
+    String serverAddr="cloudbeta.hexmeet.com"
 
     @Shared
-    String password="rongliang"
+    String username="hjtautotest1"
+
+    @Shared
+    String password="123456"
+
+    @Shared
+    MeetingOperations meetingOperations
+
 
     def setupSpec(){
-
-        LOGGER.info("Setup")
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
-
-        PublicMeeting publicMeeting = new PublicMeeting(appiumDriver);
-        publicMeeting.navigate(username,password);
-        Pause.stop(5);
-        publicMeeting.publicReservedMeeting();
-
-        reserveMeetingPage = new ReserveMeetingPage(appiumDriver);
-        //reserveMeetingPage.navigate(username,password);
+        SignInPage signInPage = new SignInPage(appiumDriver)
+        signInPage.navigate()
+        signInPage.submit(serverAddr,username,password)
+        ReserveMeetingPage reserveMeetingPage = new ReserveMeetingPage(appiumDriver);
+        reserveMeetingPage.navigate()
         reserveMeetingPage.now();
+        reserveMeetingPage.addParticipants("hjtautotest2");
         reserveMeetingPage.finish();
         reserveMeetingPage.backAfterReserver()
-        reserveMeetingPage.joinReservedMeeting()
 
-        Pause.stop(20)
-
+        and:"Join the reserved meeting"
+        reserveMeetingPage.joinReservedMeeting();
+        Pause.stop(10)
         meetingOperations = new MeetingOperations(appiumDriver)
     }
 
@@ -70,6 +71,7 @@ class OperateInAReservedMeeting extends EndpointSystemTestSpec {
     def cleanup(){
 
     }
+
 
     def "Mute umute Audio"(){
         when:" Do audio operation for the first time"
@@ -225,5 +227,5 @@ class OperateInAReservedMeeting extends EndpointSystemTestSpec {
         assert true
     }
 
-
 }
+

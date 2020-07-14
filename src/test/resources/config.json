@@ -1,13 +1,23 @@
 {
   "Android_1": {
     "platformName": "Android",
-    "platformVersion": "8.1.0",
-    "deviceName": "9245f019",
+    "platformVersion": "7.1.2",
+    "deviceName": "b001c0bf",
     "appPackage": "com.hexmeet.hjt",
     "appActivity": ".SplashActivity",
     "skipServerInstallation": true,
     "skipDeviceInitialization":true,
-    "newCommandTimeout":30
+    "newCommandTimeout": 600
+  },
+  "Android_2": {
+    "platformName": "Android",
+    "platformVersion": "8.1.0",
+    "deviceName": "",
+    "appPackage": "com.hexmeet.hjt",
+    "appActivity": ".SplashActivity",
+    "skipServerInstallation": true,
+    "skipDeviceInitialization":true,
+    "newCommandTimeout": 600
   },
   "iOS_1":{
     "platformName": "iOS",

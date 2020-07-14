@@ -3,7 +3,8 @@ package com.hexmeet.autotestcases.publiccloud
 import TestSpec.EndpointSystemTestSpec
 import com.hexmeet.Utility.Pause
 import com.hexmeet.appiumendpoint.AppiumEndpoint
-import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage.publicmeeting.reservemeeting.ReserveMeetingPage
+import com.hexmeet.pageobject.common.ReserveMeetingPage
+import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage.publicmeeting.PublicMeeting
 import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -36,8 +37,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
-        reserveMeetingPage = new ReserveMeetingPage(appiumDriver);
-        reserveMeetingPage.navigate(username,password);
+
 
     }
 
@@ -55,7 +55,14 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
 
     def "Create a now meeting and join"(){
 
-        when:"Create a reserved meeting"
+        when:"Navigate to public setting reserve page"
+        PublicMeeting publicMeeting = new PublicMeeting(appiumDriver);
+        publicMeeting.navigate(username,password);
+        Pause.stop(5);
+        publicMeeting.publicReservedMeeting();
+
+        and:"Create a reserved meeting"
+        reserveMeetingPage = new ReserveMeetingPage(appiumDriver)
         reserveMeetingPage.now();
         reserveMeetingPage.finish();
         reserveMeetingPage.backAfterReserver()
@@ -64,6 +71,9 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
         reserveMeetingPage.joinReservedMeeting()
         Pause.stop(30)
         showPicInReport(appiumDriver,"In meeting")
+
+        and:"Hangup and terminate the call"
+
 
         then:
         assert true

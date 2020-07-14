@@ -1,19 +1,16 @@
-package com.hexmeet.autotestcases.publiccloud
+package com.hexmeet.autotestcases.privatecloud
 
 import TestSpec.EndpointSystemTestSpec
 import com.hexmeet.Utility.Pause
 import com.hexmeet.appiumendpoint.AppiumEndpoint
 import com.hexmeet.pageobject.common.MeetingOperations
-import com.hexmeet.pageobject.common.ReserveMeetingPage
-import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage.publicmeeting.PublicMeeting
+import com.hexmeet.pageobject.startup.deploytype.privatedeploy.joinmeeting.PrivateDirectJoinAMeetingPage
 import io.appium.java_client.AppiumDriver
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import spock.lang.Shared
 
 import java.util.concurrent.TimeUnit
 
-class OperateInAReservedMeeting extends EndpointSystemTestSpec {
+class OperateInAGuestCall extends EndpointSystemTestSpec{
 
     @Shared
     AppiumDriver appiumDriver;
@@ -22,18 +19,19 @@ class OperateInAReservedMeeting extends EndpointSystemTestSpec {
     AppiumEndpoint androidEndpoint = new AppiumEndpoint();
 
     @Shared
-    Logger log = LoggerFactory.getLogger(this.getClass())
+    String serverAddress="cloudbeta.hexmeet.com"
 
     @Shared
-    ReserveMeetingPage reserveMeetingPage
+    String conferenceNumber="13910001001*12345"
+
+    @Shared
+    String username="hjtautotest1"
 
     @Shared
     MeetingOperations meetingOperations
-    @Shared
-    String username="rongliang"
 
     @Shared
-    String password="rongliang"
+    PrivateDirectJoinAMeetingPage privateDirectJoinAMeetingPage
 
     def setupSpec(){
 
@@ -42,19 +40,12 @@ class OperateInAReservedMeeting extends EndpointSystemTestSpec {
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
 
-        PublicMeeting publicMeeting = new PublicMeeting(appiumDriver);
-        publicMeeting.navigate(username,password);
-        Pause.stop(5);
-        publicMeeting.publicReservedMeeting();
+        privateDirectJoinAMeetingPage  = new PrivateDirectJoinAMeetingPage(appiumDriver)
+        privateDirectJoinAMeetingPage.navigate()
 
-        reserveMeetingPage = new ReserveMeetingPage(appiumDriver);
-        //reserveMeetingPage.navigate(username,password);
-        reserveMeetingPage.now();
-        reserveMeetingPage.finish();
-        reserveMeetingPage.backAfterReserver()
-        reserveMeetingPage.joinReservedMeeting()
-
-        Pause.stop(20)
+        privateDirectJoinAMeetingPage.joinAMeeting(serverAddress,conferenceNumber,username)
+        Pause.stop(10)
+        showPicInReport(appiumDriver,username)
 
         meetingOperations = new MeetingOperations(appiumDriver)
     }
@@ -212,18 +203,17 @@ class OperateInAReservedMeeting extends EndpointSystemTestSpec {
         assert true
     }
 
-    def "Hangup and terminate the call"(){
+    def "Hangup and leave the call"(){
         when:"Hangup and terminate the call"
         LOGGER.info("Hangup and terminate the call")
-        meetingOperations.hangupAndTerminateCall()
+        meetingOperations.hangupAndLeave()
         Pause.stop(5)
 
         and:"Capture the screen"
         showPicInReport(appiumDriver,"Terminated")
 
         then:
-        assert true
+        assert privateDirectJoinAMeetingPage.isOnGuestPage()
     }
-
 
 }

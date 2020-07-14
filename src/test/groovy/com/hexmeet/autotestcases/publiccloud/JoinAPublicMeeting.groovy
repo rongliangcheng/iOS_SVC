@@ -81,7 +81,7 @@ class JoinAPublicMeeting extends EndpointSystemTestSpec{
         MeetingOperations meetingOperations = new MeetingOperations(driver);
         meetingOperations.muteAudio();
 
-        Pause.sleep(5);
+        Pause.stop(5);
 
         and: "Show buttons on the screen"
         meetingOperations.muteCamera();

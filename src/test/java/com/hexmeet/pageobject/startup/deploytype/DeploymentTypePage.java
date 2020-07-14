@@ -22,7 +22,7 @@ public class DeploymentTypePage {
          Pause.stop(1);
 
          //Choose private cloud deployment
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.ImageView[1]\n").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/login_private").click();
     }
 
     public void publicCloudUser(){

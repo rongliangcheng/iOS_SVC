@@ -1,7 +1,7 @@
 package com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin;
 
 import com.hexmeet.Utility.Pause;
-import com.hexmeet.pageobject.UICommon;
+import com.hexmeet.pageobject.common.UICommon;
 import com.hexmeet.pageobject.startup.deploytype.publicdeploy.PublicCloudPage;
 import io.appium.java_client.AppiumDriver;
 

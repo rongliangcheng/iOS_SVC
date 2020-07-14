@@ -11,11 +11,12 @@ public class UIStart {
     }
 
     public  void startUp() {
+
         appiumDriver.findElementById("com.hexmeet.hjt:id/dialog_ok").click();
 
         Pause.stop(1);
 
-        appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        //appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
     }
 
 }

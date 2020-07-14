@@ -1,4 +1,4 @@
-package com.hexmeet.pageobject;
+package com.hexmeet.pageobject.common;
 
 import com.hexmeet.Utility.Pause;
 import com.hexmeet.Utility.UIElement;
@@ -8,6 +8,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.Point;
 
 import static org.openqa.selenium.By.id;
+import static org.openqa.selenium.By.xpath;
 
 public class MeetingOperations {
 
@@ -78,7 +79,7 @@ public class MeetingOperations {
 
     public void stopContent(){
         Pause.stop(0.5);
-        Point point = new Point(30,30);
+        Point point = new Point(100,100);
         TouchAction touchAction = new TouchAction(appiumDriver);
         touchAction.press(PointOption.point(point)).release().perform();
     }
@@ -120,6 +121,11 @@ public class MeetingOperations {
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/audio_mode_btn").click();
 
+    }
+
+    public boolean isInMeetingPage(){
+        Pause.stop(0.5);
+        return UIElement.byElementIsExist(appiumDriver,xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.view.View[1]"));
     }
 
 

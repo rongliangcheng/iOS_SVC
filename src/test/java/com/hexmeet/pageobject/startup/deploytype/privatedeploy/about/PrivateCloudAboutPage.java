@@ -1,4 +1,4 @@
-package com.hexmeet.pageobject.startup.deploytype.privatedeploy;
+package com.hexmeet.pageobject.startup.deploytype.privatedeploy.about;
 
 import com.hexmeet.Utility.Pause;
 import io.appium.java_client.AppiumDriver;
