@@ -69,12 +69,6 @@ task testGroupOne(type: Test) {
 //    reports.html.destination = "$buildDir/testreport/LoginTestSuite"
 }
 
-tasks.withType(GroovyCompile) {
-    groovyOptions.encoding = "MacRoman"
-}
-
-
-
 task testGroupTwo(type: Test) {
     //include '**/*SuiteOne.*'
 
