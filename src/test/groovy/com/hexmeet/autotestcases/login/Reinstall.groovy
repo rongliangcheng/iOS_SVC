@@ -1,12 +1,12 @@
 package com.hexmeet.autotestcases.login
 
-import TestSpec.SystemTestSpec
 import com.hexmeet.Utility.Pause
+import com.hexmeet.autotestcases.TestSpec.EndpointSystemTestSpec
 import io.appium.java_client.AppiumDriver
 import org.openqa.selenium.remote.DesiredCapabilities
 import spock.lang.Shared
 
-class Reinstall extends SystemTestSpec{
+class Reinstall extends EndpointSystemTestSpec{
     @Shared
     DesiredCapabilities capabilities = new DesiredCapabilities()
 
