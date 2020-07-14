@@ -4,7 +4,6 @@ import com.hexmeet.Utility.Pause;
 import com.hexmeet.pageobject.startup.deploytype.DeploymentTypePage;
 import io.appium.java_client.AppiumDriver;
 
-import static com.hexmeet.autotestcases.TestSpec.SystemTestSpec.LOGGER;
 
 public class PrivateDeployPage {
 
@@ -15,7 +14,7 @@ public class PrivateDeployPage {
     }
 
     public void navigate(){
-        LOGGER.info("Private Deploy Page");
+        //LOGGER.info("Private Deploy Page");
         DeploymentTypePage deploymentTypePage = new DeploymentTypePage(appiumDriver);
 
         deploymentTypePage.navigate();
@@ -23,19 +22,19 @@ public class PrivateDeployPage {
     }
 
     public void signIn(){
-        LOGGER.info("Sign in mode");
+        //LOGGER.info("Sign in mode");
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/login_btn").click();
     }
 
     public void joinAMeeting(){
-        LOGGER.info("Join a meeting directly");
+        //LOGGER.info("Join a meeting directly");
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/login_join_meeting").click();
     }
 
     public void setting(){
-        LOGGER.info("Setting");
+        //LOGGER.info("Setting");
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/app_setup").click();
 

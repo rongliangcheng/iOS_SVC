@@ -1,10 +1,14 @@
 package com.hexmeet.Utility;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author raleigh
  * @create 2020-06-19
  */
 public class LogUtils {
+
 
         public LogUtils() {
         }

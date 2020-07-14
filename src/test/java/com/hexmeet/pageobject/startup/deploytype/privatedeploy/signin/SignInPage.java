@@ -7,8 +7,6 @@ import com.hexmeet.pageobject.startup.deploytype.privatedeploy.PrivateDeployPage
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
-import static com.hexmeet.autotestcases.TestSpec.SystemTestSpec.LOGGER;
-
 public class SignInPage {
 
     private AppiumDriver appiumDriver;
@@ -18,14 +16,14 @@ public class SignInPage {
     }
 
     public void navigate(){
-        LOGGER.info("Sign in page");
+        //LOGGER.info("Sign in page");
         PrivateDeployPage privateDeployPage = new PrivateDeployPage(appiumDriver);
         privateDeployPage.navigate();
         privateDeployPage.signIn();
     }
 
     public void submit(String serveraddr,String accout,String password){
-        LOGGER.info("Sign in page Sumbit");
+        //LOGGER.info("Sign in page Sumbit");
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/login_server").sendKeys(serveraddr);
         appiumDriver.findElementById("com.hexmeet.hjt:id/login_name").sendKeys(accout);
@@ -39,7 +37,7 @@ public class SignInPage {
     }
 
     public void submit(String serveraddr,String accout,String password,String port,Boolean useHttps){
-        LOGGER.info("Sign in page Submit");
+        //LOGGER.info("Sign in page Submit");
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/text_advance_setting").click();
         Pause.stop(0.5);
