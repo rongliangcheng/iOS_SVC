@@ -74,7 +74,7 @@ task testGroupTwo(type: Test) {
     //include '**/*SuiteOne.*'
 
     filter {
-        include '**/JoinMeetingTestSuite.class'
+        include '**/PrivateCloudTestSuite.class'
     }
 
     testLogging {
