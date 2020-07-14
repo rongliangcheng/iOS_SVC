@@ -16,7 +16,7 @@ public class UIStart {
 
         Pause.stop(1);
 
-        //appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        appiumDriver.findElementById("android:id/button1").click();
     }
 
 }

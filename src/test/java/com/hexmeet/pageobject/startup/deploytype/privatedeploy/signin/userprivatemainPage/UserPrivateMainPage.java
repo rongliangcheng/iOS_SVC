@@ -1,8 +1,11 @@
 package com.hexmeet.pageobject.startup.deploytype.privatedeploy.signin.userprivatemainPage;
 
 import com.hexmeet.Utility.Pause;
+import com.hexmeet.Utility.UIElement;
+import com.hexmeet.pageobject.common.UICommon;
 import com.hexmeet.pageobject.startup.deploytype.privatedeploy.signin.SignInPage;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 
 public class UserPrivateMainPage {
     AppiumDriver appiumDriver;
@@ -15,6 +18,10 @@ public class UserPrivateMainPage {
         SignInPage signInPage = new SignInPage(appiumDriver);
         signInPage.navigate();
         signInPage.submit(serverAddr,account,password);
+        Pause.stop(0.5);
+
+        if(UIElement.byElementIsExist(appiumDriver, By.id("android:id/button1")))
+            UICommon.devicePermissionAllowance(appiumDriver);
     }
 
     public void meeting(){

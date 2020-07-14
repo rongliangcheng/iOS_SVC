@@ -23,12 +23,12 @@ public class MyMeetingPage {
 
     public void mymeetingpage(){
         Pause.stop(0.5);
-        appiumDriver.findElementByXPath("//android.view.View[@content-desc=\"我的会议室\"]").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]").click();
     }
 
     public void joinTheMeeting(String password){
         Pause.stop(0.5);
-        appiumDriver.findElementByXPath("//android.view.View[@content-desc=\"加入会议\"]\n").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]").click();
         Pause.stop(4);
         if(UIElement.byElementIsExist(appiumDriver, By.id("com.hexmeet.hjt:id/input_password"))) {
             appiumDriver.findElementById("com.hexmeet.hjt:id/input_password").sendKeys("1111");
@@ -41,47 +41,48 @@ public class MyMeetingPage {
 
     public void meetingSettings(String password, boolean muteWhenJoin,boolean allowAnonymousUser,boolean onlyHosterCanActivateMeeting,boolean allowOthersReserveMeeting,boolean groupSelectionBoolean){
         Pause.stop(0.5);
-        appiumDriver.findElementByXPath("//android.view.View[@content-desc=\"会议室设置\"]").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]").click();
 
+        //password
         Pause.stop(3);
-        appiumDriver.findElementByXPath("//android.webkit.WebView[@content-desc=\"会捷通\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.widget.EditText").sendKeys(password);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.widget.EditText").sendKeys(password);
 
         if(muteWhenJoin)
-            appiumDriver.findElementByXPath("//android.webkit.WebView[@content-desc=\"会捷通\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[1]/android.view.View[2]").click();
+            appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[1]").click();
 
         if(allowAnonymousUser)
-            appiumDriver.findElementByXPath("//android.webkit.WebView[@content-desc=\"会捷通\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[2]").click();
+            appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]").click();
 
         if(onlyHosterCanActivateMeeting)
-            appiumDriver.findElementByXPath("//android.webkit.WebView[@content-desc=\"会捷通\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[3]/android.view.View[2]").click();
+            appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[3]").click();
 
         if(allowAnonymousUser)
-            appiumDriver.findElementByXPath("//android.webkit.WebView[@content-desc=\"会捷通\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[4]/android.view.View[3]").click();
+            appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[4]/android.view.View[1]").click();
 
         if(groupSelectionBoolean)
             groupSelection();
 
-        appiumDriver.findElementByXPath("//android.view.View[@content-desc=\"保存\"]").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[6]/android.view.View[1]").click();
     }
 
     private void groupSelection(){
         Pause.stop(0.5);
-        appiumDriver.findElementByXPath("//android.widget.Button[@content-desc=\"选择群组\"]").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[4]/android.view.View[2]/android.widget.Button").click();
         Pause.stop(0.5);
-        appiumDriver.findElementByXPath("(//android.view.View[@content-desc=\"zhangjs\"])[1]").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[6]/android.view.View/android.widget.GridView/android.view.View[5]/android.view.View[2]").click();
 
         Pause.stop(0.5);
         //remove the group selection
-        appiumDriver.findElementByXPath("//android.view.View[@content-desc=\"×\"]").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[4]/android.view.View[3]").click();
     }
 
     public void muteUmuteCamera(){
         Pause.stop(0.5);
-        appiumDriver.findElementByXPath("//android.webkit.WebView[@content-desc=\"会捷通\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.CheckBox[1]").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.CheckBox[1]").click();
     }
 
     public void muteUmuteAudio(){
         Pause.stop(0.5);
-        appiumDriver.findElementByXPath("//android.webkit.WebView[@content-desc=\"会捷通\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.CheckBox[2]").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.CheckBox[2]").click();
     }
 }

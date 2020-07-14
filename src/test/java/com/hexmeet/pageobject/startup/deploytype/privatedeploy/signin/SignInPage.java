@@ -1,9 +1,11 @@
 package com.hexmeet.pageobject.startup.deploytype.privatedeploy.signin;
 
 import com.hexmeet.Utility.Pause;
+import com.hexmeet.Utility.UIElement;
 import com.hexmeet.pageobject.common.UICommon;
 import com.hexmeet.pageobject.startup.deploytype.privatedeploy.PrivateDeployPage;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 
 import java.util.logging.Logger;
 
@@ -33,7 +35,9 @@ public class SignInPage {
         appiumDriver.findElementById("com.hexmeet.hjt:id/login_btn").click();
 
         Pause.stop(0.5);
-        //UICommon.devicePermissionAllowance(appiumDriver);
+
+        if(UIElement.byElementIsExist(appiumDriver, By.id("android:id/button1")))
+            UICommon.devicePermissionAllowance(appiumDriver);
     }
 
     public void submit(String serveraddr,String accout,String password,String port,Boolean useHttps){
@@ -48,7 +52,9 @@ public class SignInPage {
         appiumDriver.findElementById("com.hexmeet.hjt:id/save_btn").click();
 
         Pause.stop(0.5);
-        submit(serveraddr,accout,password);
+
+        if(UIElement.byElementIsExist(appiumDriver, By.id("android:id/button1")))
+            UICommon.devicePermissionAllowance(appiumDriver);
     }
 
 

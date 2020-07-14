@@ -14,11 +14,18 @@ public class UICommon {
         LOGGER.info("Allow permissions on device");
         Pause.stop(2);
 
-        appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        appiumDriver.findElementById("android:id/button1").click();
         Pause.stop(1);
-        appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        appiumDriver.findElementById("android:id/button1").click();
         Pause.stop(1);
-        appiumDriver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        appiumDriver.findElementById("android:id/button1").click();
+    }
+
+    public static void devicePermissionAllowanceOnce(final AppiumDriver appiumDriver) {
+
+        LOGGER.info("Allow permissions on device");
+        Pause.stop(2);
+        appiumDriver.findElementById("android:id/button1").click();
     }
 
     //Used to check the wrong input password operation
