@@ -1,8 +1,9 @@
 package com.hexmeet.autotestcases.publiccloud
 
-import TestSpec.EndpointSystemTestSpec
+
 import com.hexmeet.Utility.Pause
 import com.hexmeet.appiumendpoint.AppiumEndpoint
+import com.hexmeet.autotestcases.TestSpec.EndpointSystemTestSpec
 import com.hexmeet.pageobject.common.ReserveMeetingPage
 import com.hexmeet.pageobject.startup.deploytype.publicdeploy.signin.userpublicmainpage.publicmeeting.PublicMeeting
 import io.appium.java_client.AppiumDriver

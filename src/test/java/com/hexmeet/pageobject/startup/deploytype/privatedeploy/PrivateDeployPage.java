@@ -4,7 +4,7 @@ import com.hexmeet.Utility.Pause;
 import com.hexmeet.pageobject.startup.deploytype.DeploymentTypePage;
 import io.appium.java_client.AppiumDriver;
 
-import static TestSpec.SystemTestSpec.LOGGER;
+import static com.hexmeet.autotestcases.TestSpec.SystemTestSpec.LOGGER;
 
 public class PrivateDeployPage {
 

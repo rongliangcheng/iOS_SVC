@@ -2,9 +2,8 @@ package com.hexmeet.pageobject.common;
 
 import com.hexmeet.Utility.Pause;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.TouchAction;
 
-import static TestSpec.SystemTestSpec.LOGGER;
+import static com.hexmeet.autotestcases.TestSpec.SystemTestSpec.LOGGER;
 
 public class UICommon {
 

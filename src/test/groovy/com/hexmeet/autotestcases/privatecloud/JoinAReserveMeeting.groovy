@@ -1,6 +1,6 @@
 package com.hexmeet.autotestcases.privatecloud
 
-import TestSpec.EndpointSystemTestSpec
+import com.hexmeet.autotestcases.TestSpec.EndpointSystemTestSpec
 import com.hexmeet.Utility.Pause
 import com.hexmeet.Utility.UIElement
 import com.hexmeet.appiumendpoint.AppiumEndpoint

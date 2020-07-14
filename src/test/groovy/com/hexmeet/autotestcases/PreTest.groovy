@@ -1,6 +1,6 @@
 package com.hexmeet.autotestcases;
 
-import TestSpec.EndpointSystemTestSpec
+import com.hexmeet.autotestcases.TestSpec.EndpointSystemTestSpec
 
 
 public class PreTest extends EndpointSystemTestSpec {

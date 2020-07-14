@@ -1,4 +1,4 @@
-package TestSpec
+package com.hexmeet.autotestcases.TestSpec
 
 
 import com.hexmeet.Utility.Pause

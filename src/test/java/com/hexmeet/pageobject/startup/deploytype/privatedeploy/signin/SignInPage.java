@@ -7,9 +7,7 @@ import com.hexmeet.pageobject.startup.deploytype.privatedeploy.PrivateDeployPage
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
-import java.util.logging.Logger;
-
-import static TestSpec.SystemTestSpec.LOGGER;
+import static com.hexmeet.autotestcases.TestSpec.SystemTestSpec.LOGGER;
 
 public class SignInPage {
 
