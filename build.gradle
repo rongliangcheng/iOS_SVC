@@ -54,6 +54,21 @@ task collectJars(type: Copy) {
 //    }
 //}
 
+task testDebug(type: Test) {
+    //include '**/*SuiteOne.*'
+
+    filter {
+        include '**/DebugTestSuite.class'
+    }
+
+    testLogging {
+        // Show that tests are run in the command-line output
+        events 'started', 'passed'
+    }
+//    reports.junitXml.destination = "$buildDir/test-results/SuiteOne")
+//    reports.html.destination = "$buildDir/testreport/LoginTestSuite"
+}
+
 task testGroupOne(type: Test) {
     //include '**/*SuiteOne.*'
 
