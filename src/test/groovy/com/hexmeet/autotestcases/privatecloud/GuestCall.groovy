@@ -23,7 +23,7 @@ class GuestCall extends EndpointSystemTestSpec{
     String serverAddress="cloudbeta.hexmeet.com"
 
     @Shared
-    String conferenceNumber="139100001001*12345"
+    String conferenceNumber="13910001001*12345"
 
     @Shared
     String username="hjtautotest1"
