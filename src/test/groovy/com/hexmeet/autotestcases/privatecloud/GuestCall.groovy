@@ -23,7 +23,7 @@ class GuestCall extends EndpointSystemTestSpec{
     String serverAddress="cloudbeta.hexmeet.com"
 
     @Shared
-    String conferenceNumber="13910000200"
+    String conferenceNumber="139100001001*12345"
 
     @Shared
     String username="hjtautotest1"
@@ -111,7 +111,7 @@ class GuestCall extends EndpointSystemTestSpec{
     def "Join with wrong server id"(){
 
         when:" Join with username"
-        privateDirectJoinAMeetingPage.joinAMeeting("serverAddress","13910000200","hjtautotest1")
+        privateDirectJoinAMeetingPage.joinAMeeting("serverAddress",conferenceNumber,"hjtautotest1")
         showPicInReportPortrait(appiumDriver,"No name join")
 
         Pause.stop(5)
