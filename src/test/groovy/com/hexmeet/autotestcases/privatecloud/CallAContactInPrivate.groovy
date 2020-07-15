@@ -71,7 +71,7 @@ class CallAContactInPrivate extends EndpointSystemTestSpec{
         CallAContactInStructure callAContactInStructure = new CallAContactInStructure(appiumDriver)
         callAContactInStructure.findAContactInStructure("hjtautotest2")
         Pause.stop(3)
-        showPicInReport(appiumDriver,"Find the contact:");
+        showPicInReportPortrait(appiumDriver,"Find the contact:");
 
         and:"Call the contact"
         callAContactInStructure.callTheContact()

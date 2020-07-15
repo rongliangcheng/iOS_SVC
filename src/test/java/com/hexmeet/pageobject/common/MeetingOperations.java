@@ -5,6 +5,7 @@ import com.hexmeet.Utility.UIElement;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 
 import static org.openqa.selenium.By.id;
@@ -35,27 +36,31 @@ public class MeetingOperations {
     }
 
     public void switchCamera(){
-        Pause.stop(0.5);
-        touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.ImageView").click();
+//        Pause.stop(0.5);
+//        touchScreenToShowButton();
+//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.ImageView").click();
+        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.ImageView");
     }
 
     public void muteUmuteAudio(){
-        Pause.stop(0.5);
-        touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.ImageView").click();
- }
+//        Pause.stop(0.5);
+//        touchScreenToShowButton();
+//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.ImageView").click();
+        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.ImageView");
+    }
 
     public void muteUmuteCamera(){
-        Pause.stop(0.5);
-        touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.ImageView").click();
+//        Pause.stop(0.5);
+//        touchScreenToShowButton();
+//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.ImageView").click();
+        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.ImageView");
     }
 
     public void meetingManagement(){
-        Pause.stop(0.5);
-        touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.ImageView").click();
+//        Pause.stop(0.5);
+//        touchScreenToShowButton();
+//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.ImageView").click();
+        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.ImageView");
     }
 
     //ToDo
@@ -99,9 +104,11 @@ public class MeetingOperations {
     }
 
     public void switchLayout(){
-        Pause.stop(0.5);
-        touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[6]/android.widget.ImageView").click();
+//        Pause.stop(0.5);
+//        touchScreenToShowButton();
+//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[6]/android.widget.ImageView").click();
+
+        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[6]/android.widget.ImageView");
     }
 
     public void showHideLocalPreview(){
@@ -144,6 +151,18 @@ public class MeetingOperations {
             Pause.stop(2);
             appiumDriver.findElementByXPath(mainView).click();
             Pause.stop(2);
+        }
+    }
+
+    private void tryAfterFailByXpath(String xpath){
+        try{
+            Pause.stop(2);
+            touchScreenToShowButton();
+            appiumDriver.findElementByXPath(xpath).click();
+        } catch (Exception e){
+            Pause.stop(2);
+            touchScreenToShowButton();
+            appiumDriver.findElementByXPath(xpath).click();
         }
     }
 

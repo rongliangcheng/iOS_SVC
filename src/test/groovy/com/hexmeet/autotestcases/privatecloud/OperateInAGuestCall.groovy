@@ -135,7 +135,7 @@ class OperateInAGuestCall extends EndpointSystemTestSpec{
         LOGGER.info("Stop content")
         meetingOperations.stopContent()
         Pause.stop(2)
-        showPicInReportPortrait(appiumDriver,"Stop Content")
+        showPicInReport(appiumDriver,"Stop Content")
 
         then:
         assert  true

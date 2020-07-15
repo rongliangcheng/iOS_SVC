@@ -72,6 +72,7 @@ class JoinMyMeetingInPrivate extends EndpointSystemTestSpec{
 
         Pause.stop(5)
         MeetingOperations meetingOperations = new MeetingOperations(appiumDriver)
+        showPicInReport(appiumDriver,"My Meeting in Private")
         Boolean isInAmeeting = meetingOperations.isInMeetingPage();
 
         and:"hangup the call "
