@@ -39,7 +39,7 @@ class OperateInAReservedMeeting extends EndpointSystemTestSpec {
 
         LOGGER.info("Setup")
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
 
         PublicMeeting publicMeeting = new PublicMeeting(appiumDriver);

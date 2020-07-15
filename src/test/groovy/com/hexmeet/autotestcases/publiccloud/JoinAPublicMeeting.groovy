@@ -29,7 +29,7 @@ class JoinAPublicMeeting extends EndpointSystemTestSpec{
 
         LOGGER.info("Setup")
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         driver = androidEndpoint.getAppiumEndpointDriver()
 
     }
@@ -69,7 +69,7 @@ class JoinAPublicMeeting extends EndpointSystemTestSpec{
 
         publicJoinMeeting.joinButton()
 
-        Pause.sleep(10)
+        Pause.stop(10)
 
 //        String pic = captureScreenShot(driver);
 //

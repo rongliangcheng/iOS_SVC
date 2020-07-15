@@ -36,7 +36,7 @@ class GuestCall extends EndpointSystemTestSpec{
 
         LOGGER.info("Setup")
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
 
         privateDirectJoinAMeetingPage  = new PrivateDirectJoinAMeetingPage(appiumDriver)
@@ -112,7 +112,7 @@ class GuestCall extends EndpointSystemTestSpec{
 
         when:" Join with username"
         privateDirectJoinAMeetingPage.joinAMeeting("serverAddress","13910000200","hjtautotest1")
-        showPicInReportPortrait()(appiumDriver,"No name join")
+        showPicInReportPortrait(appiumDriver,"No name join")
 
         Pause.stop(5)
 

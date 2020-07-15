@@ -41,7 +41,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
 
  //       LOGGER.info("Setup")
 //        androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-//        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+//        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
 //        appiumDriver = androidEndpoint.getAppiumEndpointDriver()
 //        SignInPage signInPage = new SignInPage(appiumDriver)
 //        signInPage.navigate()
@@ -67,7 +67,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
 
         when:"Create a reserved meeting"
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
@@ -79,7 +79,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
         reserveMeetingPage.backAfterReserver()
 
         and:"Join the reserved meeting"
-        reserveMeetingPage.joinReservedMeeting();
+        reserveMeetingPage.joinReservedMeeting("hjtautotest1");
         Pause.stop(30)
         showPicInReport(appiumDriver,"In meeting")
 
@@ -96,7 +96,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
     def "Create a now meeting and invite another participant"(){
         when:"Create a reserved meeting"
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
@@ -110,7 +110,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
         reserveMeetingPage.backAfterReserver()
 
         and:"Join the reserved meeting"
-        reserveMeetingPage.joinReservedMeeting();
+        reserveMeetingPage.joinReservedMeeting("hjtautotest1");
         Pause.stop(30)
         showPicInReport(appiumDriver,"In meeting")
 

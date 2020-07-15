@@ -70,7 +70,7 @@ class InstallApp extends EndpointSystemTestSpec{
 
         when:
         androidEndpoint.initialAppiumEndpoint("Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         String version = JsonConfigSingleton.getJsonObjectFromJsonConfig().
                 getJSONObject("Android_1_Install").getString("version");
 

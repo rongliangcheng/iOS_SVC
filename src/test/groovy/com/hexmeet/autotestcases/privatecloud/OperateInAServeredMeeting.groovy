@@ -42,7 +42,7 @@ class OperateInAServeredMeeting extends EndpointSystemTestSpec{
 
     def setupSpec(){
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()

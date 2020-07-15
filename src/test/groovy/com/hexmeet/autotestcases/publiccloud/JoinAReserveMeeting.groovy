@@ -36,7 +36,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
 
         LOGGER.info("Setup")
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
 
 
@@ -69,7 +69,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
         reserveMeetingPage.backAfterReserver()
 
         and:"Join the reserved meeting"
-        reserveMeetingPage.joinReservedMeeting()
+        reserveMeetingPage.joinReservedMeeting("rongliang")
         Pause.stop(30)
         showPicInReport(appiumDriver,"In meeting")
 

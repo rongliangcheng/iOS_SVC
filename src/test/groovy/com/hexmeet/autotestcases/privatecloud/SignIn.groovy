@@ -60,7 +60,7 @@ class SignIn extends EndpointSystemTestSpec{
 
         and:"Capture a picture"
 
-        showPicInReportortrait(appiumDriver,"Private cloud sign in")
+        showPicInReportPortrait(appiumDriver,"Private cloud sign in")
 
         then:
         assert true

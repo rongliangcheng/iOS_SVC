@@ -9,13 +9,18 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
+import org.slf4j.Logger;
+
+import static org.slf4j.LoggerFactory.getLogger;
 
 
 public class ReserveMeetingPage {
 
+    Logger logger = getLogger("ReserveMeetingPage");
+
     private AppiumDriver appiumDriver;
 
-    ReserveMeetingPage(AppiumDriver appiumDriver){
+    ReserveMeetingPage(AppiumDriver appiumDriver) throws ClassNotFoundException {
         this.appiumDriver = appiumDriver;
     }
 
@@ -97,7 +102,7 @@ public class ReserveMeetingPage {
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View").click();
     }
 
-    public void joinReservedMeeting(){
+    public void joinReservedMeeting(String meetingOwner){
         Pause.stop(0.5);
         TouchAction touchAction = new TouchAction(appiumDriver);
         Point pointStart = new Point(300,1900);
@@ -106,9 +111,30 @@ public class ReserveMeetingPage {
         Pause.stop(1);
         //appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.widget.ListView/android.view.View").click();
         //appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[-1]/android.view.View[4]/android.widget.ListView/android.view.View").click();
-        Point pointItem = new Point(300,1900);
-        touchAction.press(PointOption.point(pointItem)).release().perform();
-        Pause.stop(0.5);
+
+        String preStr="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[";
+        String appendixStr="]/android.view.View/android.widget.ListView/android.view.View/android.view.View[3]";
+        String onlyOneItemXpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.widget.ListView/android.view.View/android.view.View[3]";
+        String xpath="";
+
+        if(UIElement.byElementIsExist(appiumDriver,By.xpath(onlyOneItemXpath)) && appiumDriver.findElementByXPath(onlyOneItemXpath).getText().contains(meetingOwner)){
+            xpath=onlyOneItemXpath;
+        }else{
+            int loop = 1;
+            while(loop < 30 ){
+                xpath=preStr+loop+appendixStr;
+                if(UIElement.byElementIsExist(appiumDriver,By.xpath(xpath)) && appiumDriver.findElementByXPath(xpath).getText().contains(meetingOwner))
+                    break;
+
+                loop++;
+            }
+        }
+
+        appiumDriver.findElementByXPath(xpath).click();
+// Try to use coordinate to locate the element
+//        Point pointItem = new Point(300,1900);
+//        touchAction.press(PointOption.point(pointItem)).release().perform();
+        Pause.stop(3);
 
         String joinMeetingButton1="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.view.View";
         String joinMeetingButton2="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[6]/android.view.View";

@@ -7,7 +7,7 @@ import io.appium.java_client.AppiumDriver;
 
 public class PublicSignIn {
 
-    final private AppiumDriver appiumDriver;
+    private AppiumDriver appiumDriver;
 
     public PublicSignIn(AppiumDriver appiumDriver){
         this.appiumDriver = appiumDriver;
@@ -21,15 +21,14 @@ public class PublicSignIn {
 
     public void fillInAccount(String account){
         Pause.stop(1);
-
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[1]").clear();
+//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[1]").clear();
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[1]").sendKeys(account);
 
     }
 
     public void fillInPassword(String password){
         Pause.stop(1);
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[2]").clear();
+//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[2]").clear();
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.EditText[2]").sendKeys(password);
     }
 

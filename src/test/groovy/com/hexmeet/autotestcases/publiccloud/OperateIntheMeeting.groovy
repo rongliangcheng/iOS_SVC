@@ -33,7 +33,7 @@ class OperateIntheMeeting extends EndpointSystemTestSpec{
 
         LOGGER.info("Setup")
         androidEndpoint.initialAppiumEndpoint("Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         driver = androidEndpoint.getAppiumEndpointDriver()
         androidEndpoint.initialAppiumEndpoint("Android_1")
         meetingOperations = new MeetingOperations(driver);
@@ -76,7 +76,7 @@ class OperateIntheMeeting extends EndpointSystemTestSpec{
         when:"mute the audio"
         meetingOperations.muteAudio()
 
-        showPicInReport(driver)
+        showPicInReport(driver,"Mute/Umute audio")
 
         then:
         assert true
@@ -86,7 +86,7 @@ class OperateIntheMeeting extends EndpointSystemTestSpec{
         when:"mute the local camera"
         meetingOperations.muteCamera()
 
-        showPicInReport(driver)
+        showPicInReport(driver,"Mute/Umute camera")
 
         then:
         assert true
@@ -97,7 +97,7 @@ class OperateIntheMeeting extends EndpointSystemTestSpec{
         when:"mute the local camera"
         meetingOperations.layoutModeSwitch()
 
-        showPicInReport(driver)
+        showPicInReport(driver,"Switch Layout")
 
         then:
         assert true
