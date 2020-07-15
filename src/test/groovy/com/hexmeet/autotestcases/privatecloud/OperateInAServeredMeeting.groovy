@@ -55,7 +55,7 @@ class OperateInAServeredMeeting extends EndpointSystemTestSpec{
         reserveMeetingPage.backAfterReserver()
 
         and:"Join the reserved meeting"
-        reserveMeetingPage.joinReservedMeeting();
+        reserveMeetingPage.joinReservedMeeting(username);
         Pause.stop(10)
         meetingOperations = new MeetingOperations(appiumDriver)
     }

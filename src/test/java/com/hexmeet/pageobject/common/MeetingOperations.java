@@ -141,8 +141,9 @@ public class MeetingOperations {
         } else {
             //LOGGER.info("Element existing");
             appiumDriver.findElementByXPath(mainView).click();
-            Pause.stop(1.5);
+            Pause.stop(2);
             appiumDriver.findElementByXPath(mainView).click();
+            Pause.stop(2);
         }
     }
 
