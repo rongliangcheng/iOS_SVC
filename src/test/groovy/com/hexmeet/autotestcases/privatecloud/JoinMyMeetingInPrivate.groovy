@@ -56,7 +56,7 @@ class JoinMyMeetingInPrivate extends EndpointSystemTestSpec{
 
     }
 
-    def "Change meeting password and join my meeting"(){
+    def "更改会议密码然后以更改的密码呼入我的会议"(){
 
         when:"Create a reserved meeting"
         String newPassword="12345"
