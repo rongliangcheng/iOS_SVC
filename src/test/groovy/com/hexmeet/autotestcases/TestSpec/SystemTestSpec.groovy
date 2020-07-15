@@ -70,7 +70,7 @@ class SystemTestSpec extends Specification{
         reportInfo string+" <img src=\"${pic}\" width=\"380\" height=\"180\" /> "
     }
 
-    def showPicInReportortrait(AppiumDriver appiumDriver,String string){
+    def showPicInReportPortrait(AppiumDriver appiumDriver,String string){
         String pic = captureScreenShot(appiumDriver);
         Pause.sleep(1);
         reportInfo string+" <img src=\"${pic}\" width=\"180\" height=\"380\" /> "

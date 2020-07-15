@@ -80,7 +80,10 @@ public class MeetingOperations {
     public void stopContent(){
         Pause.stop(0.5);
         Point point = new Point(100,160);
+        Pause.stop(3);
         TouchAction touchAction = new TouchAction(appiumDriver);
+        touchAction.press(PointOption.point(point)).release().perform();
+        Pause.stop(3);
         touchAction.press(PointOption.point(point)).release().perform();
     }
 

@@ -140,13 +140,13 @@ class OperateInAServeredMeeting extends EndpointSystemTestSpec{
         LOGGER.info("Share content")
         meetingOperations.shareContent()
         Pause.stop(2)
-        showPicInReport(appiumDriver,"Share content")
+        showPicInReportPortrait(appiumDriver,"Share content")
 
         and: "Stop content"
         LOGGER.info("Stop content")
         meetingOperations.stopContent()
         Pause.stop(2)
-        showPicInReport(appiumDriver,"Stop Content")
+        showPicInReportPortrait(appiumDriver,"Stop Content")
 
         then:
         assert  true
@@ -221,7 +221,7 @@ class OperateInAServeredMeeting extends EndpointSystemTestSpec{
         Pause.stop(5)
 
         and:"Capture the screen"
-        showPicInReport(appiumDriver,"Terminated")
+        showPicInReportPortrait(appiumDriver,"Terminated")
 
         then:
         assert true

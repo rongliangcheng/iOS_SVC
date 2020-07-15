@@ -98,7 +98,7 @@ class GuestCall extends EndpointSystemTestSpec{
 
         when:" Join with username"
         privateDirectJoinAMeetingPage.joinAMeeting(serverAddress,"1239","hjtautotest1")
-        showPicInReport(appiumDriver,"No name join")
+        showPicInReportPortrait(appiumDriver,"No name join")
 
         Pause.stop(5)
 
@@ -112,7 +112,7 @@ class GuestCall extends EndpointSystemTestSpec{
 
         when:" Join with username"
         privateDirectJoinAMeetingPage.joinAMeeting("serverAddress","13910000200","hjtautotest1")
-        showPicInReport(appiumDriver,"No name join")
+        showPicInReportPortrait()(appiumDriver,"No name join")
 
         Pause.stop(5)
 

@@ -69,7 +69,7 @@ class CallAContactInPrivate extends EndpointSystemTestSpec{
     def "Call a contact in a structure"(){
         when:"Find a user in company structure and call"
         CallAContactInStructure callAContactInStructure = new CallAContactInStructure(appiumDriver)
-        callAContactInStructure.findAContactInStructure("hjtautotest2\n")
+        callAContactInStructure.findAContactInStructure("hjtautotest2")
         Pause.stop(3)
         showPicInReport(appiumDriver,"Find the contact:");
 
