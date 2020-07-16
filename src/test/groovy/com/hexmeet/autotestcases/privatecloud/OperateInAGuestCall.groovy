@@ -62,6 +62,7 @@ class OperateInAGuestCall extends EndpointSystemTestSpec{
 
     }
 
+    
     def "Mute umute Audio"(){
         when:" Do audio operation for the first time"
         LOGGER.info("Mute audio")
@@ -123,8 +124,9 @@ class OperateInAGuestCall extends EndpointSystemTestSpec{
         assert true
     }
 
-    def "Share content and stop content"(){
+ //   def "Share content and stop content"(){
 
+    def "∑÷œÌ◊¿√Ê£¨Õ£÷π∑÷œÌ"(){
         when: "Begin to share content"
         LOGGER.info("Share content")
         meetingOperations.shareContent()

@@ -8,11 +8,6 @@ group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenCentral()
-}
-
-
-repositories {
     // Spock releases are available from Maven Central
     mavenCentral()
     // Spock snapshots are available from the Sonatype OSS snapshot repository
@@ -25,7 +20,7 @@ dependencies {
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.68'
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
     compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
-    //compile group: 'io.qameta.allure', name: 'allure-gradle', version: '2.5'
+    compile group: 'io.qameta.allure', name: 'allure-spock', version: '2.9.0'
 
     testCompile group: 'org.spockframework', name: 'spock-core', version: '1.3-groovy-2.5'
     testCompile group: 'com.athaydes', name: 'spock-reports', version: '1.7.1'
@@ -35,8 +30,8 @@ dependencies {
     testCompile "org.slf4j:slf4j-log4j12:1.7.30"
     testCompile "junit:junit:4.13"
 
-
 }
+
 
 
 task collectJars(type: Copy) {
@@ -44,18 +39,19 @@ task collectJars(type: Copy) {
     from configurations.testRuntime
 }
 
-//test {
-////    useJUnitPlatform()
-//
-//    include "com.hexmeet.autotestcases.testsuites.LoginTestSuite"
-//
-//    testLogging {
-//        events   "started","passed", "skipped", "failed"
-//    }
-//}
+test {
+    useJUnitPlatform()
+
+    include "com.hexmeet.autotestcases.testsuites.DebugTestSuite"
+
+    testLogging {
+        events   "started","passed", "skipped", "failed"
+    }
+}
 
 task testDebug(type: Test) {
     //include '**/*SuiteOne.*'
+    //useJUnitPlatform()
 
     filter {
         include '**/DebugTestSuite.class'
@@ -86,6 +82,8 @@ task testGroupOne(type: Test) {
 
 task testGroupTwo(type: Test) {
     //include '**/*SuiteOne.*'
+
+    useJUnitPlatform()
 
     filter {
         include '**/PrivateCloudTestSuite.class'
