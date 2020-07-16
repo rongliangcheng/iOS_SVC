@@ -83,7 +83,7 @@ task testGroupOne(type: Test) {
 task testGroupTwo(type: Test) {
     //include '**/*SuiteOne.*'
 
-    useJUnitPlatform()
+    //useJUnitPlatform()
 
     filter {
         include '**/PrivateCloudTestSuite.class'
