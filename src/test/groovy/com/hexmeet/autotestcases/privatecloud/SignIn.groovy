@@ -47,8 +47,8 @@ class SignIn extends EndpointSystemTestSpec{
 
     }
 
-    def "Sign in with username and password"(){
-
+    //def "Sign in with username and password"(){
+    def "登录"(){
         when:"Initial the driver"
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)

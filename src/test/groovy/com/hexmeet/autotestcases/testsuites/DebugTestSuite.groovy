@@ -1,6 +1,7 @@
 package com.hexmeet.autotestcases.testsuites
 
-import com.hexmeet.autotestcases.privatecloud.JoinMyMeetingInPrivate
+
+import com.hexmeet.autotestcases.privatecloud.SignIn
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
@@ -8,7 +9,7 @@ import org.junit.runners.Suite
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses([
-        JoinMyMeetingInPrivate
+        SignIn
 //        JoinAReserveMeeting,
 //        OperateInAReservedMeeting
 ])
