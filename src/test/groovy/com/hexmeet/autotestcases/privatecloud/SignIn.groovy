@@ -50,20 +50,20 @@ class SignIn extends EndpointSystemTestSpec{
 
     //def "Sign in with username and password"(){
     def "登录"(){
-        when:"Initial the driver"
+        when:"初始化AppiumDriver"
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
-        and:"Sign in"
+        and:"以hjtautotest1/123456登录"
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
         signInPage.submit("cloudbeta.hexmeet.com","hjtautotest1","123456")
 
-        and:"Capture a picture"
+        //and:"Capture a picture"
 
-        showPicInReportPortrait(appiumDriver,"Private cloud sign in")
+        //showPicInReportPortrait(appiumDriver,"Private cloud sign in")
 
-        then:
+        then:"成功登录"
         assert true
     }
 
