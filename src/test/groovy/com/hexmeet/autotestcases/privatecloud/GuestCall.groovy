@@ -8,9 +8,11 @@ import com.hexmeet.pageobject.startup.deploytype.privatedeploy.joinmeeting.Priva
 import io.appium.java_client.AppiumDriver
 
 import spock.lang.Shared
+import spock.lang.Title
 
 import java.util.concurrent.TimeUnit
 
+@Title("非注册用户呼叫")
 class GuestCall extends EndpointSystemTestSpec{
 
     @Shared
@@ -56,39 +58,39 @@ class GuestCall extends EndpointSystemTestSpec{
 
     }
 
-    def "Join without username"(){
+    def "匿名呼入"(){
 
-        when:" Join with username"
+        when:"不填用户名"
         privateDirectJoinAMeetingPage.joinAMeeting(serverAddress,conferenceNumber,"")
         Pause.stop(20)
         showPicInReport(appiumDriver,"No name join")
 
-        and: "Hangup and leave"
+        and: "挂断并离开会议"
         MeetingOperations meetingOperations = new MeetingOperations(appiumDriver)
         meetingOperations.hangupAndLeave()
 
         Pause.stop(5)
 
-        then:
+        then:"成功挂断"
         assert privateDirectJoinAMeetingPage.isOnGuestPage()
 
     }
 
 
-    def "Join with username"(){
+    def "带用户名呼入"(){
 
-        when:" Join with username"
+        when:"填写用户名"
         privateDirectJoinAMeetingPage.joinAMeeting(serverAddress,conferenceNumber,username)
         Pause.stop(20)
         showPicInReport(appiumDriver,username)
 
-        and: "Hangup and leave"
+        and: "挂断并离开"
         MeetingOperations meetingOperations = new MeetingOperations(appiumDriver)
         meetingOperations.hangupAndLeave()
 
         Pause.stop(5)
 
-        then:
+        then:"成功挂断"
         assert privateDirectJoinAMeetingPage.isOnGuestPage()
 
     }

@@ -12,9 +12,12 @@ import org.openqa.selenium.By
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import spock.lang.Shared
+import spock.lang.Title
 
 import java.util.concurrent.TimeUnit
 
+
+@Title("从通讯录中呼叫")
 class CallAContactInPrivate extends EndpointSystemTestSpec{
 
     @Shared

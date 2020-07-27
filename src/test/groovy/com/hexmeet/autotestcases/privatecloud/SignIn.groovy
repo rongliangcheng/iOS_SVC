@@ -8,10 +8,14 @@ import com.hexmeet.pageobject.startup.deploytype.privatedeploy.signin.SignInPage
 import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import spock.lang.Narrative
 import spock.lang.Shared
+import spock.lang.Title
 
 import java.util.concurrent.TimeUnit
 
+
+@Title("正确登录及异常登录")
 class SignIn extends EndpointSystemTestSpec{
 
     @Shared
@@ -22,7 +26,6 @@ class SignIn extends EndpointSystemTestSpec{
 
     @Shared
     Logger log = LoggerFactory.getLogger(this.getClass())
-
 
     def setupSpec(){
 
