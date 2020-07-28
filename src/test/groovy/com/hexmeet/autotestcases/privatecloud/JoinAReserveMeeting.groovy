@@ -11,10 +11,13 @@ import io.appium.java_client.AppiumDriver
 import org.openqa.selenium.By
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import spock.lang.Narrative
 import spock.lang.Shared
+import spock.lang.Title
 
 import java.util.concurrent.TimeUnit
-
+@Title("加入预约会议")
+@Narrative("创建预约会议并加入，邀请别的用户")
 class JoinAReserveMeeting extends EndpointSystemTestSpec {
     @Shared
     AppiumDriver appiumDriver;
@@ -63,9 +66,9 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
 
     }
 
-    def "Create a now meeting and join"(){
+    def "创建即时会议并加入"(){
 
-        when:"Create a reserved meeting"
+        when:"创建一即时会议"
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
@@ -78,23 +81,23 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
         reserveMeetingPage.finish();
         reserveMeetingPage.backAfterReserver()
 
-        and:"Join the reserved meeting"
+        and:"加入预约会议"
         reserveMeetingPage.joinReservedMeeting("hjtautotest1");
         Pause.stop(30)
-        showPicInReport(appiumDriver,"In meeting")
+        showPicInReport(appiumDriver,"与会中")
 
-        and:"Hanup and terminate the call"
+        and:"挂断并结束会议"
         MeetingOperations meetingOperations = new MeetingOperations(appiumDriver)
         meetingOperations.hangupAndTerminateCall()
 
-        then:
+        then:"操作成功"
         assert  true
 
     }
 
 
-    def "Create a now meeting and invite another participant"(){
-        when:"Create a reserved meeting"
+    def "创建即时会议并要求其他与会者"(){
+        when:"创建一即时会议"
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
@@ -109,16 +112,16 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
         reserveMeetingPage.finish();
         reserveMeetingPage.backAfterReserver()
 
-        and:"Join the reserved meeting"
+        and:"加入会议"
         reserveMeetingPage.joinReservedMeeting("hjtautotest1");
         Pause.stop(30)
-        showPicInReport(appiumDriver,"In meeting")
+        showPicInReport(appiumDriver,"与会中")
 
-        and:"Hanup and terminate the call"
+        and:"挂断并结束会议"
         MeetingOperations meetingOperations = new MeetingOperations(appiumDriver)
         meetingOperations.hangupAndTerminateCall()
 
-        then:
+        then:"操作成功"
         assert  true
     }
 

@@ -15,7 +15,8 @@ import spock.lang.Title
 import java.util.concurrent.TimeUnit
 
 
-@Title("正确登录及异常登录")
+@Title("登录")
+@Narrative("测试用户登录场景：正常，用户名错，密码错，服务器错")
 class SignIn extends EndpointSystemTestSpec{
 
     @Shared
@@ -52,7 +53,7 @@ class SignIn extends EndpointSystemTestSpec{
     }
 
     //def "Sign in with username and password"(){
-    def "登录"(){
+    def "正常用户密码登录"(){
         when:"初始化AppiumDriver"
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)

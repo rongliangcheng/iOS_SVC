@@ -10,9 +10,14 @@ import com.hexmeet.pageobject.startup.deploytype.privatedeploy.signin.userprivat
 import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import spock.lang.Narrative
 import spock.lang.Shared
+import spock.lang.Title
 
 import java.util.concurrent.TimeUnit
+
+@Title("加入私有部署我的会议")
+@Narrative("呼叫私有部署中我的会议室，修改麦克，摄像头设置，并修改会议密码")
 
 class JoinMyMeetingInPrivate extends EndpointSystemTestSpec{
     @Shared
@@ -56,9 +61,9 @@ class JoinMyMeetingInPrivate extends EndpointSystemTestSpec{
 
     }
 
-    def "Chang meeting password and call into my meeting"(){
+    def "修改会议密码并加入会议"(){
 
-        when:"Create a reserved meeting"
+        when:"修改我的会议密码，麦克摄像头设置"
         String newPassword="12345"
         MyMeetingPage myMeetingPage = new MyMeetingPage(appiumDriver);
         myMeetingPage.navigate(serverAddr,username,password);
@@ -72,14 +77,14 @@ class JoinMyMeetingInPrivate extends EndpointSystemTestSpec{
 
         Pause.stop(5)
         MeetingOperations meetingOperations = new MeetingOperations(appiumDriver)
-        showPicInReport(appiumDriver,"My Meeting in Private")
+        showPicInReport(appiumDriver,"私有部署中我的会议")
         Boolean isInAmeeting = meetingOperations.isInMeetingPage();
 
-        and:"hangup the call "
+        and:"挂断并结束会议"
         Pause.stop(30)
         meetingOperations.hangupAndTerminateCall()
 
-        then:
+        then:"操作成功"
         assert isInAmeeting
 
     }

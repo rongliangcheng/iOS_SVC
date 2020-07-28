@@ -6,13 +6,14 @@ import com.hexmeet.appiumendpoint.AppiumEndpoint
 import com.hexmeet.pageobject.common.MeetingOperations
 import com.hexmeet.pageobject.startup.deploytype.privatedeploy.joinmeeting.PrivateDirectJoinAMeetingPage
 import io.appium.java_client.AppiumDriver
-
+import spock.lang.Narrative
 import spock.lang.Shared
 import spock.lang.Title
 
 import java.util.concurrent.TimeUnit
 
 @Title("非注册用户呼叫")
+@Narrative("测试非注册用户的各种呼叫场景")
 class GuestCall extends EndpointSystemTestSpec{
 
     @Shared
@@ -96,29 +97,29 @@ class GuestCall extends EndpointSystemTestSpec{
     }
 
 
-    def "Join with not existed meeting room"(){
+    def "呼叫不存在的会议号"(){
 
-        when:" Join with username"
+        when:"呼叫不存在的会议号1239"
         privateDirectJoinAMeetingPage.joinAMeeting(serverAddress,"1239","hjtautotest1")
         showPicInReportPortrait(appiumDriver,"No name join")
 
         Pause.stop(5)
 
-        then:
+        then:"呼叫不能建立，并提示"
         assert privateDirectJoinAMeetingPage.isOnGuestPage()
 
     }
 
 
-    def "Join with wrong server id"(){
+    def "呼叫错误的服务器地址"(){
 
-        when:" Join with username"
+        when:"呼叫不存在的服务器地址"
         privateDirectJoinAMeetingPage.joinAMeeting("serverAddress",conferenceNumber,"hjtautotest1")
         showPicInReportPortrait(appiumDriver,"No name join")
 
         Pause.stop(5)
 
-        then:
+        then:"呼叫不能建立，并且停留在呼叫界面"
         assert privateDirectJoinAMeetingPage.isOnGuestPage()
 
     }

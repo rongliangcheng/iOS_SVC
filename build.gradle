@@ -109,6 +109,8 @@ task testGroupTwo(type: Test) {
         include '**/PrivateCloudTestSuite.class'
     }
 
+    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.specSummaryNameOption','title'
+
     testLogging {
         // Show that tests are run in the command-line output
         events 'started', 'passed'

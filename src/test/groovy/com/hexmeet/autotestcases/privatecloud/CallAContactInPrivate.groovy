@@ -11,6 +11,7 @@ import io.appium.java_client.AppiumDriver
 import org.openqa.selenium.By
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import spock.lang.Narrative
 import spock.lang.Shared
 import spock.lang.Title
 
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit
 
 
 @Title("从通讯录中呼叫")
+@Narrative("从通信录中找到用户并呼叫")
 class CallAContactInPrivate extends EndpointSystemTestSpec{
 
     @Shared
@@ -69,20 +71,20 @@ class CallAContactInPrivate extends EndpointSystemTestSpec{
 
     }
 
-    def "Call a contact in a structure"(){
-        when:"Find a user in company structure and call"
+    def "呼叫组织架构中的用户"(){
+        when:"在公司的组织架构中找到用户"
         CallAContactInStructure callAContactInStructure = new CallAContactInStructure(appiumDriver)
         callAContactInStructure.findAContactInStructure("hjtautotest2")
         Pause.stop(3)
-        showPicInReportPortrait(appiumDriver,"Find the contact:");
+        showPicInReportPortrait(appiumDriver,"找到用户");
 
-        and:"Call the contact"
+        and:"呼叫用户"
         callAContactInStructure.callTheContact()
         Pause.stop(5)
-        showPicInReport(appiumDriver,"Call to a contact");
+        showPicInReport(appiumDriver,"呼叫用户");
         Pause.stop(30)
 
-        then:
+        then:"呼叫成功"
         assert  UIElement.byElementIsExist(appiumDriver, By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.view.View[1]"))
 
     }
