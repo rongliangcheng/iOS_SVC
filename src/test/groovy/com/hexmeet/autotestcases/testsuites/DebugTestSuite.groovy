@@ -11,7 +11,7 @@ import org.junit.runners.Suite
 @RunWith(Suite.class)
 @Suite.SuiteClasses([
           SignIn,
-//          GuestCall
+          GuestCall
 //          CallAContactInPrivate
 //        JoinAReserveMeeting,
 //        OperateInAReservedMeeting
