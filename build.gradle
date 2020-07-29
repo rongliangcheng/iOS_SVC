@@ -53,7 +53,7 @@ test {
 
 task testDebug(type: Test) {
     //include '**/*SuiteOne.*'
-    useJUnitPlatform()
+    //useJUnitPlatform()
 
     filter {
         include '**/DebugTestSuite.class'
