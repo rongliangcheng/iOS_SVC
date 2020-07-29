@@ -53,7 +53,7 @@ test {
 
 task testDebug(type: Test) {
     //include '**/*SuiteOne.*'
-    //useJUnitPlatform()
+    useJUnitPlatform()
 
     filter {
         include '**/DebugTestSuite.class'
@@ -61,12 +61,12 @@ task testDebug(type: Test) {
 
     //systemProperty 'com.athaydes.spockframework.report.outputDir', 'build/reports/spock'
 
-    systemProperty 'com.athaydes.spockframework.report.IReportCreator','com.athaydes.spockframework.report.internal.HtmlReportCreator'
-    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.featureReportCss','spock-feature-report.css'
-    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.summaryReportCss','spock-summary-report.css'
-    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.printThrowableStackTrace',false
-    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.inlineCss',true
-    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.enabled',true
+//    systemProperty 'com.athaydes.spockframework.report.IReportCreator','com.athaydes.spockframework.report.internal.HtmlReportCreator'
+//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.featureReportCss','spock-feature-report.css'
+//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.summaryReportCss','spock-summary-report.css'
+//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.printThrowableStackTrace',false
+//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.inlineCss',true
+//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.enabled',true
     systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.specSummaryNameOption','title'
     //systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', false
     //systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.specSummaryNameOption=class_name_and_title
