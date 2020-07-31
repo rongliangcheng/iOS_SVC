@@ -136,7 +136,7 @@ class SignIn extends EndpointSystemTestSpec{
         Pause.stop(5)
         showPicInReportPortrait(appiumDriver,"服务器不可达")
 
-        Pause.stop(10)
+        Pause.stop(20)
 
         boolean isOnSignInPage = signInPage.isOnSignInPage()
 
@@ -179,32 +179,32 @@ class SignIn extends EndpointSystemTestSpec{
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
         signInPage.submit(serverAddr,signInUserName,"12345")
-        Pause.stop(1.2)
+        Pause.stop(0.6)
         showPicInReportPortrait(appiumDriver,"密码错误第1次")
 
         and:"以hjtautotest3/12345 登录 第2次"
         signInPage.submit(serverAddr,signInUserName,"12345")
-        Pause.stop(1.2)
+        Pause.stop(0.6)
         showPicInReportPortrait(appiumDriver,"密码错误第2次")
 
         and:"以hjtautotest3/12345 登录 第3次"
         signInPage.submit(serverAddr,signInUserName,"12345")
-        Pause.stop(1.2)
+        Pause.stop(0.6)
         showPicInReportPortrait(appiumDriver,"密码错误第3次")
 
         and:"以hjtautotest3/12345 登录 第4次"
         signInPage.submit(serverAddr,signInUserName,"12345")
-        Pause.stop(1.2)
+        Pause.stop(0.6)
         showPicInReportPortrait(appiumDriver,"密码错误第4次")
 
         and:"以hjtautotest3/12345 登录 第5次"
         signInPage.submit(serverAddr,signInUserName,"12345")
-        Pause.stop(1.2)
+        Pause.stop(0.6)
         showPicInReportPortrait(appiumDriver,"密码错误第5次")
 
         and:"以hjtautotest3/123456 正常登录 第1次"
         signInPage.submit(serverAddr,signInUserName,signInPassword)
-        Pause.stop(1.2)
+        Pause.stop(0.6)
         showPicInReportPortrait(appiumDriver,"账号被锁5分钟")
 
         Pause.stop(5)
