@@ -1,11 +1,14 @@
 package com.hexmeet.autotestcases.privatecloud
 
+import com.hexmeet.Utility.UIElement
 import com.hexmeet.autotestcases.TestSpec.EndpointSystemTestSpec
 import com.hexmeet.Utility.Pause
 import com.hexmeet.appiumendpoint.AppiumEndpoint
+import com.hexmeet.pageobject.common.UICommon
 import com.hexmeet.pageobject.common.meetingpage.MeetingMainPage
 import com.hexmeet.pageobject.startup.deploytype.privatedeploy.signin.SignInPage
 import io.appium.java_client.AppiumDriver
+import org.openqa.selenium.By
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import spock.lang.Narrative
@@ -44,10 +47,7 @@ class SignIn extends EndpointSystemTestSpec{
     String PORT = "80"
 
     @Shared
-    String signInUserName = "hjtautotest1"
-
-    @Shared
-    String signInUserName3 = "hjtautotest3"
+    String signInUserName = "hjtautotest3"
 
     @Shared
     String signInPassword = "123456"
@@ -78,21 +78,23 @@ class SignIn extends EndpointSystemTestSpec{
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
 
 
-        and:"以hjtautotest1/123456登录"
+        and:"以hjtautotest3/123456登录"
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
         signInPage.submit(serverAddr,signInUserName,signInPassword)
 
         Pause.stop(4)
+        if(UIElement.byElementIsExist(appiumDriver, By.id("android:id/button1")))
+            UICommon.devicePermissionAllowance(appiumDriver);
+        Pause.stop(1)
         showPicInReportPortrait(appiumDriver,"登录界面")
 
         MeetingMainPage meetingMainPage = new MeetingMainPage(appiumDriver)
-        boolean isOnMainPage = meetingMainPage.existMyMeetingRoom
-
+        boolean isOnMeetingPage = meetingMainPage.isOnMeetingPage()
 
 
         then:"成功登录"
-        assert true
+        assert isOnMeetingPage
     }
 
     def "正常用户带port登录"(){
@@ -101,19 +103,23 @@ class SignIn extends EndpointSystemTestSpec{
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(IMPLICIT_WAIT_TIME, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
 
-        and:"以hjtautotest1/123456/port 80登录"
+        and:"以hjtautotest3/123456/port 80登录"
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
         signInPage.submit(serverAddr,signInUserName,signInPassword,PORT,false)
 
         Pause.stop(4)
+        if(UIElement.byElementIsExist(appiumDriver, By.id("android:id/button1")))
+            UICommon.devicePermissionAllowance(appiumDriver);
+        Pause.stop(1)
         showPicInReportPortrait(appiumDriver,"登录界面")
 
         MeetingMainPage meetingMainPage = new MeetingMainPage(appiumDriver)
-        boolean isOnMainPage = meetingMainPage.isExistMyMeetingRoom()
+        boolean isOnMeetingPage = meetingMainPage.isOnMeetingPage()
+
 
         then:"成功登录"
-        assert true
+        assert isOnMeetingPage
     }
 
     def "以错误的port 8000登录"(){
@@ -122,7 +128,7 @@ class SignIn extends EndpointSystemTestSpec{
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(IMPLICIT_WAIT_TIME, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
 
-        and:"以hjtautotest1/123456/port 8000登录"
+        and:"以hjtautotest3/123456/port 8000登录"
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
         signInPage.submit(serverAddr,signInUserName,signInPassword,"8000",false)
@@ -130,11 +136,12 @@ class SignIn extends EndpointSystemTestSpec{
         Pause.stop(5)
         showPicInReportPortrait(appiumDriver,"服务器不可达")
 
-        MeetingMainPage meetingMainPage = new MeetingMainPage(appiumDriver)
-        boolean isOnMainPage = meetingMainPage.isExistMyMeetingRoom()
+        Pause.stop(10)
+
+        boolean isOnSignInPage = signInPage.isOnSignInPage()
 
         then:"登录失败"
-        assert true
+        assert isOnSignInPage
     }
 
     def "以不存在的用户登录"(){
@@ -148,14 +155,18 @@ class SignIn extends EndpointSystemTestSpec{
         signInPage.navigate()
         signInPage.submit(serverAddr,"hjtautotest",signInPassword,PORT,false)
 
+
         Pause.stop(2)
         showPicInReportPortrait(appiumDriver,"用户名或密码错误")
 
-        MeetingMainPage meetingMainPage = new MeetingMainPage(appiumDriver)
-        boolean isOnMainPage = meetingMainPage.isExistMyMeetingRoom()
+        Pause.stop(4)
+        if(UIElement.byElementIsExist(appiumDriver, By.id("android:id/button1")))
+            UICommon.devicePermissionAllowance(appiumDriver);
+
+        boolean isOnSignInPage = signInPage.isOnSignInPage()
 
         then:"登录失败"
-        assert true
+        assert isOnSignInPage
     }
 
     def "用户密码错误登录5次被锁"(){
@@ -167,40 +178,43 @@ class SignIn extends EndpointSystemTestSpec{
         and:"以hjtautotest3/12345 登录 第1次"
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
-        signInPage.submit(serverAddr,signInUserName3,"12345")
-        Pause.stop(0.5)
+        signInPage.submit(serverAddr,signInUserName,"12345")
+        Pause.stop(1.2)
         showPicInReportPortrait(appiumDriver,"密码错误第1次")
 
         and:"以hjtautotest3/12345 登录 第2次"
-        signInPage.submit(serverAddr,signInUserName3,"12345")
-        Pause.stop(0.5)
+        signInPage.submit(serverAddr,signInUserName,"12345")
+        Pause.stop(1.2)
         showPicInReportPortrait(appiumDriver,"密码错误第2次")
 
         and:"以hjtautotest3/12345 登录 第3次"
-        signInPage.submit(serverAddr,signInUserName3,"12345")
-        Pause.stop(0.5)
+        signInPage.submit(serverAddr,signInUserName,"12345")
+        Pause.stop(1.2)
         showPicInReportPortrait(appiumDriver,"密码错误第3次")
 
         and:"以hjtautotest3/12345 登录 第4次"
-        signInPage.submit(serverAddr,signInUserName3,"12345")
-        Pause.stop(0.5)
+        signInPage.submit(serverAddr,signInUserName,"12345")
+        Pause.stop(1.2)
         showPicInReportPortrait(appiumDriver,"密码错误第4次")
 
         and:"以hjtautotest3/12345 登录 第5次"
-        signInPage.submit(serverAddr,signInUserName3,"12345")
-        Pause.stop(0.5)
+        signInPage.submit(serverAddr,signInUserName,"12345")
+        Pause.stop(1.2)
         showPicInReportPortrait(appiumDriver,"密码错误第5次")
 
         and:"以hjtautotest3/123456 正常登录 第1次"
-        signInPage.submit(serverAddr,signInUserName3,signInPassword)
-        Pause.stop(0.5)
+        signInPage.submit(serverAddr,signInUserName,signInPassword)
+        Pause.stop(1.2)
         showPicInReportPortrait(appiumDriver,"账号被锁5分钟")
 
+        Pause.stop(5)
+        boolean isOnSignInPage = signInPage.isOnSignInPage()
+
         and:"等待5分钟"
-        Pause.stop(320)
+        Pause.stop(300)
 
         then:"6次失败"
-        assert true
+        assert isOnSignInPage
     }
 
     def "5分钟后正常登录"(){
@@ -213,16 +227,20 @@ class SignIn extends EndpointSystemTestSpec{
         and:"以hjtautotest3/123456登录"
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
-        signInPage.submit(serverAddr,signInUserName3,signInPassword)
+        signInPage.submit(serverAddr,signInUserName,signInPassword)
+
+        Pause.stop(4)
+        if(UIElement.byElementIsExist(appiumDriver, By.id("android:id/button1")))
+            UICommon.devicePermissionAllowance(appiumDriver);
 
         Pause.stop(4)
         showPicInReportPortrait(appiumDriver,"登录界面")
 
         MeetingMainPage meetingMainPage = new MeetingMainPage(appiumDriver)
-        boolean isOnMainPage = meetingMainPage.existMyMeetingRoom
+        boolean isOnMeetingPage = meetingMainPage.isOnMeetingPage()
 
         then:"成功登录"
-        assert true
+        assert isOnMeetingPage
     }
 
 }
