@@ -99,7 +99,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
     }
 
 
-    def "创建即时会议并要求其他与会者"(){
+    def "创建即时会议并邀请其他与会者"(){
         when:"创建一即时会议"
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
