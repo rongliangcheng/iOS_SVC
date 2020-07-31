@@ -30,7 +30,11 @@ public class MeetingMainPage {
         }
     }
 
-    public boolean isExistMyMeetingRoom(){
+    public boolean isOnMyMeetingRoom(){
         return UIElement.byElementIsExist(appiumDriver,By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[1]/android.widget.ListView/android.view.View"));
+    }
+
+    public boolean isOnMeetingPage(){
+        return UIElement.byElementIsExist(appiumDriver,By.id("com.hexmeet.hjt:id/conference"));
     }
 }

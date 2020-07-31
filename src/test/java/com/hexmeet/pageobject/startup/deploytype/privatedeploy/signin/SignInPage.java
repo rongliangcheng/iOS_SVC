@@ -60,5 +60,9 @@ public class SignInPage {
             UICommon.devicePermissionAllowance(appiumDriver);
     }
 
+    public boolean isOnSignInPage(){
+        return UIElement.byElementIsExist(appiumDriver,By.id("com.hexmeet.hjt:id/login_title"));
+    }
+
 
 }
