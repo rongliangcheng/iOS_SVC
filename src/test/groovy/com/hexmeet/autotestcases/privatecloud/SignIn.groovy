@@ -12,6 +12,7 @@ import org.openqa.selenium.By
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import spock.lang.Narrative
+import spock.lang.Retry
 import spock.lang.Shared
 import spock.lang.Title
 
@@ -71,6 +72,7 @@ class SignIn extends EndpointSystemTestSpec{
 
 
 
+    @Retry
     def "正常用户密码登录"(){
         when:"初始化AppiumDriver"
         androidEndpoint.initialAppiumEndpointfromJson(configFileName,androidKeyword_1)
@@ -97,6 +99,7 @@ class SignIn extends EndpointSystemTestSpec{
         assert isOnMeetingPage
     }
 
+    @Retry
     def "正常用户带port登录"(){
         when:"初始化AppiumDriver"
         androidEndpoint.initialAppiumEndpointfromJson(configFileName,androidKeyword_1)
@@ -122,6 +125,7 @@ class SignIn extends EndpointSystemTestSpec{
         assert isOnMeetingPage
     }
 
+    @Retry
     def "以错误的port 8000登录"(){
         when:"初始化AppiumDriver"
         androidEndpoint.initialAppiumEndpointfromJson(configFileName,androidKeyword_1)
@@ -144,6 +148,7 @@ class SignIn extends EndpointSystemTestSpec{
         assert isOnSignInPage
     }
 
+    @Retry
     def "以不存在的用户登录"(){
         when:"初始化AppiumDriver"
         androidEndpoint.initialAppiumEndpointfromJson(configFileName,androidKeyword_1)
@@ -168,6 +173,7 @@ class SignIn extends EndpointSystemTestSpec{
         then:"登录失败"
         assert isOnSignInPage
     }
+
 
     def "用户密码错误登录5次被锁"(){
         when:"初始化AppiumDriver"
@@ -217,6 +223,7 @@ class SignIn extends EndpointSystemTestSpec{
         assert isOnSignInPage
     }
 
+    @Retry
     def "5分钟后正常登录"(){
         when:"初始化AppiumDriver"
         androidEndpoint.initialAppiumEndpointfromJson(configFileName,androidKeyword_1)

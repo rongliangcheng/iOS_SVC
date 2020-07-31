@@ -7,6 +7,7 @@ import com.hexmeet.pageobject.common.MeetingOperations
 import com.hexmeet.pageobject.startup.deploytype.privatedeploy.joinmeeting.PrivateDirectJoinAMeetingPage
 import io.appium.java_client.AppiumDriver
 import spock.lang.Narrative
+import spock.lang.Retry
 import spock.lang.Shared
 import spock.lang.Title
 
@@ -14,6 +15,8 @@ import java.util.concurrent.TimeUnit
 
 @Title("非注册用户入会后进行操作")
 @Narrative("非注册用户入会进行麦克，摄像头，模式等的操作")
+@Retry(delay=10000)
+
 class OperateInAGuestCall extends EndpointSystemTestSpec{
 
     @Shared

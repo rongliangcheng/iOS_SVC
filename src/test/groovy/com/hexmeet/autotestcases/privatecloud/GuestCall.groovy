@@ -7,6 +7,7 @@ import com.hexmeet.pageobject.common.MeetingOperations
 import com.hexmeet.pageobject.startup.deploytype.privatedeploy.joinmeeting.PrivateDirectJoinAMeetingPage
 import io.appium.java_client.AppiumDriver
 import spock.lang.Narrative
+import spock.lang.Retry
 import spock.lang.Shared
 import spock.lang.Title
 
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit
 
 @Title("非注册用户呼叫")
 @Narrative("测试非注册用户的各种呼叫场景")
+@Retry(delay=10000)
 class GuestCall extends EndpointSystemTestSpec{
 
     @Shared

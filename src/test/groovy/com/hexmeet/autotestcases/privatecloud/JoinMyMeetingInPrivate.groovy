@@ -11,6 +11,7 @@ import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import spock.lang.Narrative
+import spock.lang.Retry
 import spock.lang.Shared
 import spock.lang.Title
 
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit
 
 @Title("加入私有部署我的会议")
 @Narrative("呼叫私有部署中我的会议室，修改麦克，摄像头设置，并修改会议密码")
+@Retry(delay=10000)
 
 class JoinMyMeetingInPrivate extends EndpointSystemTestSpec{
     @Shared
@@ -44,9 +46,6 @@ class JoinMyMeetingInPrivate extends EndpointSystemTestSpec{
     def setupSpec(){
 
         LOGGER.info("Setup")
-        androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
-        appiumDriver = androidEndpoint.getAppiumEndpointDriver()
     }
 
     def cleanupSpec(){
@@ -63,7 +62,12 @@ class JoinMyMeetingInPrivate extends EndpointSystemTestSpec{
 
     def "修改会议密码并加入会议"(){
 
-        when:"修改我的会议密码，麦克摄像头设置"
+        when: "初始化"
+        androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
+        appiumDriver = androidEndpoint.getAppiumEndpointDriver()
+
+        and :"修改我的会议密码，麦克摄像头设置"
         String newPassword="12345"
         MyMeetingPage myMeetingPage = new MyMeetingPage(appiumDriver);
         myMeetingPage.navigate(serverAddr,username,password);

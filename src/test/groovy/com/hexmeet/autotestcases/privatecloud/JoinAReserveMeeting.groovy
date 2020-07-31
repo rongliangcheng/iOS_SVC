@@ -12,12 +12,15 @@ import org.openqa.selenium.By
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import spock.lang.Narrative
+import spock.lang.Retry
 import spock.lang.Shared
 import spock.lang.Title
 
 import java.util.concurrent.TimeUnit
 @Title("加入预约会议")
 @Narrative("创建预约会议并加入，邀请别的用户")
+@Retry(delay=20000)
+
 class JoinAReserveMeeting extends EndpointSystemTestSpec {
     @Shared
     AppiumDriver appiumDriver;

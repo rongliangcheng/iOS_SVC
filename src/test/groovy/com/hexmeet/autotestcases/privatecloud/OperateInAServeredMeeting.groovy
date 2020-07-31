@@ -10,6 +10,7 @@ import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import spock.lang.Narrative
+import spock.lang.Retry
 import spock.lang.Shared
 import spock.lang.Title
 
@@ -17,6 +18,9 @@ import java.util.concurrent.TimeUnit
 
 @Title("加入预约会议并进行操作")
 @Narrative("预约会议然后进行麦克，摄像头，模式的操作")
+@Retry(delay=10000)
+
+
 class OperateInAServeredMeeting extends EndpointSystemTestSpec{
 
     @Shared
