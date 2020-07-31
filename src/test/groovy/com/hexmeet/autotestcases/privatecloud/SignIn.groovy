@@ -47,6 +47,9 @@ class SignIn extends EndpointSystemTestSpec{
     String signInUserName = "hjtautotest1"
 
     @Shared
+    String signInUserName3 = "hjtautotest3"
+
+    @Shared
     String signInPassword = "123456"
 
     def setupSpec(){
@@ -78,7 +81,7 @@ class SignIn extends EndpointSystemTestSpec{
         and:"以hjtautotest1/123456登录"
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
-        signInPage.submit("cloudbeta.hexmeet.c.om","hjtautotest1","123456")
+        signInPage.submit(serverAddr,signInUserName,signInPassword)
 
         Pause.stop(4)
         showPicInReportPortrait(appiumDriver,"登录界面")
@@ -161,48 +164,64 @@ class SignIn extends EndpointSystemTestSpec{
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(IMPLICIT_WAIT_TIME, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
 
-        and:"以hjtautotest1/12345 登录 第1次"
+        and:"以hjtautotest3/12345 登录 第1次"
         SignInPage signInPage = new SignInPage(appiumDriver)
         signInPage.navigate()
-        signInPage.submit(serverAddr,signInUserName,"12345")
+        signInPage.submit(serverAddr,signInUserName3,"12345")
         Pause.stop(0.5)
         showPicInReportPortrait(appiumDriver,"密码错误第1次")
 
-        and:"以hjtautotest1/12345 登录 第2次"
-        signInPage.submit(serverAddr,signInUserName,"12345")
+        and:"以hjtautotest3/12345 登录 第2次"
+        signInPage.submit(serverAddr,signInUserName3,"12345")
         Pause.stop(0.5)
         showPicInReportPortrait(appiumDriver,"密码错误第2次")
 
-        and:"以hjtautotest1/12345 登录 第3次"
-        signInPage.submit(serverAddr,signInUserName,"12345")
+        and:"以hjtautotest3/12345 登录 第3次"
+        signInPage.submit(serverAddr,signInUserName3,"12345")
         Pause.stop(0.5)
         showPicInReportPortrait(appiumDriver,"密码错误第3次")
 
-        and:"以hjtautotest1/12345 登录 第4次"
-        signInPage.submit(serverAddr,signInUserName,"12345")
+        and:"以hjtautotest3/12345 登录 第4次"
+        signInPage.submit(serverAddr,signInUserName3,"12345")
         Pause.stop(0.5)
         showPicInReportPortrait(appiumDriver,"密码错误第4次")
 
-        and:"以hjtautotest1/12345 登录 第5次"
-        signInPage.submit(serverAddr,signInUserName,"12345")
+        and:"以hjtautotest3/12345 登录 第5次"
+        signInPage.submit(serverAddr,signInUserName3,"12345")
         Pause.stop(0.5)
         showPicInReportPortrait(appiumDriver,"密码错误第5次")
 
-        and:"以hjtautotest1/123456 登录 第1次"
-        signInPage.submit(serverAddr,signInUserName,signInPassword)
+        and:"以hjtautotest3/123456 正常登录 第1次"
+        signInPage.submit(serverAddr,signInUserName3,signInPassword)
         Pause.stop(0.5)
         showPicInReportPortrait(appiumDriver,"账号被锁5分钟")
 
-        and:"5分钟后登录成功"
-        Pause.stop(300)
-        signInPage.submit(serverAddr,signInUserName,signInPassword)
+        and:"等待5分钟"
+        Pause.stop(320)
+
+        then:"6次失败"
+        assert true
+    }
+
+    def "5分钟后正常登录"(){
+        when:"初始化AppiumDriver"
+        androidEndpoint.initialAppiumEndpointfromJson(configFileName,androidKeyword_1)
+        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(IMPLICIT_WAIT_TIME, TimeUnit.SECONDS)
+        appiumDriver = androidEndpoint.getAppiumEndpointDriver()
+
+
+        and:"以hjtautotest3/123456登录"
+        SignInPage signInPage = new SignInPage(appiumDriver)
+        signInPage.navigate()
+        signInPage.submit(serverAddr,signInUserName3,signInPassword)
+
         Pause.stop(4)
-        showPicInReportPortrait(appiumDriver,"登录成功")
+        showPicInReportPortrait(appiumDriver,"登录界面")
 
         MeetingMainPage meetingMainPage = new MeetingMainPage(appiumDriver)
-        boolean isOnMainPage = meetingMainPage.isExistMyMeetingRoom()
+        boolean isOnMainPage = meetingMainPage.existMyMeetingRoom
 
-        then:"登录失败"
+        then:"成功登录"
         assert true
     }
 
