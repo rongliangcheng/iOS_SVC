@@ -36,7 +36,7 @@ public class SignInPage {
             UICommon.devicePermissionAllowance(appiumDriver);
     }
 
-    public void submit(String serveraddr,String accout,String password,String port,Boolean useHttps){
+    public void submit(String serveraddr,String accout,String password,String port,boolean useHttps){
         //LOGGER.info("Sign in page Submit");
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/text_advance_setting").click();
@@ -46,6 +46,13 @@ public class SignInPage {
             appiumDriver.findElementById("com.hexmeet.hjt:id/https_switch").click();
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/save_btn").click();
+
+        Pause.stop(0.5);
+
+        appiumDriver.findElementById("com.hexmeet.hjt:id/login_server").sendKeys(serveraddr);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/login_name").sendKeys(accout);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/login_password").sendKeys(password);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/login_btn").click();
 
         Pause.stop(0.5);
 
