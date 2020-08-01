@@ -224,7 +224,7 @@ class SignIn extends EndpointSystemTestSpec{
     }
 
     @Retry
-    def "5分钟后正常登录"(){
+    def "用户密码错误登录5次被锁后5分钟正常登录"(){
         when:"初始化AppiumDriver"
         androidEndpoint.initialAppiumEndpointfromJson(configFileName,androidKeyword_1)
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(IMPLICIT_WAIT_TIME, TimeUnit.SECONDS)

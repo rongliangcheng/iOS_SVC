@@ -102,7 +102,7 @@ public class ReserveMeetingPage {
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View").click();
     }
 
-    public void joinReservedMeeting(String meetingOwner){
+    public void findReservedMeeting(String meetingOwner){
         Pause.stop(0.5);
         TouchAction touchAction = new TouchAction(appiumDriver);
         Point pointStart = new Point(300,1900);
@@ -131,6 +131,10 @@ public class ReserveMeetingPage {
         }
 
         appiumDriver.findElementByXPath(xpath).click();
+    }
+
+    public void joinReservedMeeting(String meetingOwner){
+        findReservedMeeting(meetingOwner);
 // Try to use coordinate to locate the element
 //        Point pointItem = new Point(300,1900);
 //        touchAction.press(PointOption.point(pointItem)).release().perform();
@@ -144,6 +148,24 @@ public class ReserveMeetingPage {
             appiumDriver.findElementByXPath(joinMeetingButton1).click();
         }
 
+    }
+
+    public void deleteReservedMeeting(String meetingOwner){
+        findReservedMeeting(meetingOwner);
+// Try to use coordinate to locate the element
+//        Point pointItem = new Point(300,1900);
+//        touchAction.press(PointOption.point(pointItem)).release().perform();
+        Pause.stop(3);
+
+        String terminateButton1="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.widget.ListView/android.view.View[3]/android.view.View[1]";
+        String terminateButton2="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[6]/android.widget.ListView/android.view.View[3]/android.view.View[1]";
+        if(UIElement.byElementIsExist(appiumDriver,By.xpath(terminateButton2))) {
+            appiumDriver.findElementByXPath(terminateButton2).click();
+        }else if (UIElement.byElementIsExist(appiumDriver,By.xpath(terminateButton1))){
+            appiumDriver.findElementByXPath(terminateButton1).click();
+        }
+
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[4]/android.view.View/android.view.View[3]/android.view.View[2]").click();
     }
 
 }
