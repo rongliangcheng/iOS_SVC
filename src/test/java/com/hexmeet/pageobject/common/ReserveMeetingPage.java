@@ -55,6 +55,18 @@ public class ReserveMeetingPage {
         //        appiumDriver.
     }
 
+    public boolean containStringInDuration(String username,String string){
+        findReservedMeeting(username);
+        Pause.stop(1);
+//        logger.info(appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[2]/android.view.View[2]").toString());
+        boolean findString = appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[2]/android.view.View[2]").getText().contains(string);
+        Pause.stop(0.5);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View/android.view.View").click();
+
+        return findString;
+
+    }
+
     public void setMeetingPassword(String password){
         Pause.stop(0.5);
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]").click();
@@ -102,7 +114,24 @@ public class ReserveMeetingPage {
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View").click();
     }
 
-    public void findReservedMeeting(String meetingOwner){
+    private void goToMeetingControl(){
+        Pause.stop(0.5);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.widget.ListView/android.view.View[2]/android.view.View[2]").click();
+    }
+
+    public void unlockMeeting(String username){
+        findReservedMeeting(username);
+        Pause.stop(3);
+        goToMeetingControl();
+        Pause.stop(2);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[4]/android.view.View[2]").click();
+        Pause.stop(2);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[7]/android.widget.Button[1]").click();
+        Pause.stop(2);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View/android.view.View").click();
+    }
+
+    private String findReservedMeetingXpath(String meetingOwner){
         Pause.stop(0.5);
         TouchAction touchAction = new TouchAction(appiumDriver);
         Point pointStart = new Point(300,1900);
@@ -121,7 +150,7 @@ public class ReserveMeetingPage {
             xpath=onlyOneItemXpath;
         }else{
             int loop = 1;
-            while(loop < 30 ){
+            while(loop < 15 ){
                 xpath=preStr+loop+appendixStr;
                 if(UIElement.byElementIsExist(appiumDriver,By.xpath(xpath)) && appiumDriver.findElementByXPath(xpath).getText().contains(meetingOwner))
                     break;
@@ -130,6 +159,12 @@ public class ReserveMeetingPage {
             }
         }
 
+        return xpath;
+    }
+
+    public void findReservedMeeting(String meetingOwner){
+
+        String xpath = findReservedMeetingXpath(meetingOwner);
         appiumDriver.findElementByXPath(xpath).click();
     }
 
@@ -165,7 +200,19 @@ public class ReserveMeetingPage {
             appiumDriver.findElementByXPath(terminateButton1).click();
         }
 
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[4]/android.view.View/android.view.View[3]/android.view.View[2]").click();
+        if(UIElement.byElementIsExist(appiumDriver,By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]"))){
+            appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]").click();
+        }
+
+        if(UIElement.byElementIsExist(appiumDriver,By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[4]/android.view.View/android.view.View[3]/android.view.View[2]"))) {
+            appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[4]/android.view.View/android.view.View[3]/android.view.View[2]").click();
+        }
+    }
+
+    public void clearReservedMeetings(String meetingOwner){
+        while (UIElement.byElementIsExist(appiumDriver,By.xpath(findReservedMeetingXpath(meetingOwner)))){
+            deleteReservedMeeting(meetingOwner);
+        }
     }
 
 }

@@ -6,7 +6,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
+import org.springframework.cache.annotation.CachePut;
 
 import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
@@ -133,24 +135,95 @@ public class MeetingOperations {
 
     }
 
+    private void goIntoMeetingControl(){
+        Pause.stop(1);
+        touchScreenToShowButton();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.ImageView").click();
+    }
+
+    public void inviteParticipantInAMeeting(String username){
+        goIntoMeetingControl();
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[1]/android.view.View[2]").click();
+        Pause.stop(2);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText").sendKeys(username);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText").click();
+        appiumDriver.getKeyboard().sendKeys(Keys.RETURN);
+        Pause.stop(2);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.widget.Image").click();
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.view.View[3]").click();
+        Pause.stop(1);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/close_window").click();
+    }
+
+    public void muteAllInAMeeting(){
+        goIntoMeetingControl();
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]/android.view.View[2]").click();
+        Pause.stop(1);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/close_window").click();
+    }
+
+    public void umuteAllInAMeeting(){
+        goIntoMeetingControl();
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[3]/android.view.View[2]").click();
+        Pause.stop(1);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/close_window").click();
+    }
+
+    public void lockTheMeeting(){
+        goIntoMeetingControl();
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[4]/android.view.View[2]").click();
+        Pause.stop(0.5);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.widget.Button[1]").click();
+        Pause.stop(1);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/close_window").click();
+    }
+
+    public void unlockTheMeeting(){
+        goIntoMeetingControl();
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[4]/android.view.View[2]").click();
+        Pause.stop(0.5);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.widget.Button[1]").click();
+        Pause.stop(1);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/close_window").click();
+    }
+
+    public void postponeTheMeeting(){
+        goIntoMeetingControl();
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[4]/android.view.View[2]").click();
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.widget.Button[2]").click();
+        Pause.stop(1);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[7]/android.view.View[2]").click();
+        Pause.stop(1);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/close_window").click();
+    }
+
     public boolean isInMeetingPage(){
         Pause.stop(0.5);
         return UIElement.byElementIsExist(appiumDriver,xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.view.View[1]"));
+    }
+
+    public boolean hasTwoParticipants(){
+        Pause.stop(0.5);
+        return UIElement.byElementIsExist(appiumDriver,xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.ImageView"));
     }
 
 
     private void touchScreenToShowButton(){
         String mainView="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.view.View[1]";
         if(!UIElement.byElementIsExist(appiumDriver,id("com.hexmeet.hjt:id/timer_chronometer"))){
-
-            //LOGGER.info("Element not existing");
             appiumDriver.findElementByXPath(mainView).click();
         } else {
             //LOGGER.info("Element existing");
             appiumDriver.findElementByXPath(mainView).click();
             Pause.stop(2);
             appiumDriver.findElementByXPath(mainView).click();
-            Pause.stop(2);
         }
     }
 
