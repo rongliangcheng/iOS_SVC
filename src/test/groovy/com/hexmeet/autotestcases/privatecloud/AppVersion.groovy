@@ -66,6 +66,7 @@ class AppVersion extends EndpointSystemTestSpec{
         privateCloudAboutPage.navigate()
         version = privateCloudAboutPage.getVersion()
         log.info(version)
+        showPicInReportPortrait(appiumDriver,"版本信息")
 
         def filePath="D:\\Dev\\workspace\\Jenkins\\workspace\\HJT_SVC_Android\\build\\version.txt"
         File file = new File(filePath)

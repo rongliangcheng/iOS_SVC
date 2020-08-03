@@ -78,7 +78,7 @@ class OperateReserveMeeting extends EndpointSystemTestSpec {
         and:"找到并删除即时会议"
         reserveMeetingPage.deleteReservedMeeting("hjtautotest1");
         Pause.stop(5)
-        showPicInReport(appiumDriver,"预约会议删除")
+        showPicInReportPortrait(appiumDriver,"预约会议删除")
 
         MeetingMainPage meetingMainPage = new MeetingMainPage(appiumDriver)
 
@@ -107,7 +107,7 @@ class OperateReserveMeeting extends EndpointSystemTestSpec {
         and:"找到并删除预约会议"
         reserveMeetingPage.deleteReservedMeeting("hjtautotest1");
         Pause.stop(5)
-        showPicInReport(appiumDriver,"预约会议删除")
+        showPicInReportPortrait(appiumDriver,"预约会议删除")
 
         MeetingMainPage meetingMainPage = new MeetingMainPage(appiumDriver)
 

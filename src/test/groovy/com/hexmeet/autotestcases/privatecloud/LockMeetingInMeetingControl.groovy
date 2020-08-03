@@ -67,7 +67,7 @@ class LockMeetingInMeetingControl extends EndpointSystemTestSpec{
 
 
     def "1.清除已预约会议"() {
-        when: "清除已经hjtautotest1预约会议"
+        when: "清除hjtautotest1已预约会议"
         androidEndpoint.initialAppiumEndpointfromJson("config.json", "Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()

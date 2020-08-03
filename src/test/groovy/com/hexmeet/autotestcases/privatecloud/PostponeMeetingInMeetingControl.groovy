@@ -81,6 +81,7 @@ class PostponeMeetingInMeetingControl extends EndpointSystemTestSpec{
         reserveMeetingPage.navigate()
         reserveMeetingPage.now();
         reserveMeetingPage.finish();
+        showPicInReportPortrait(appiumDriver,"会议1小时预约成功")
         reserveMeetingPage.backAfterReserver()
 
         and:"入会"
@@ -99,6 +100,7 @@ class PostponeMeetingInMeetingControl extends EndpointSystemTestSpec{
         Pause.stop(1)
 
         boolean postponed = reserveMeetingPage.containStringInDuration(username,"30")
+        showPicInReportPortrait(appiumDriver,"会议增加了30分钟")
 
         reserveMeetingPage.deleteReservedMeeting(username)
 
