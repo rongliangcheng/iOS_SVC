@@ -1,6 +1,7 @@
 package com.hexmeet.pageobject.startup.deploytype.privatedeploy.about;
 
 import com.hexmeet.Utility.Pause;
+import com.hexmeet.pageobject.startup.deploytype.privatedeploy.PrivateDeployPage;
 import io.appium.java_client.AppiumDriver;
 
 public class PrivateCloudAboutPage {
@@ -11,10 +12,19 @@ public class PrivateCloudAboutPage {
         this.appiumDriver = appiumDriver;
     }
 
+    public void navigate(){
+        PrivateDeployPage privateDeployPage = new PrivateDeployPage(appiumDriver);
+        privateDeployPage.navigate();
+        privateDeployPage.setup();
+    }
 
-    public String getVersion(final AppiumDriver appiumDriver){
-        Pause.stop(1);
 
+    public String getVersion(){
+        Pause.stop(2);
+
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout[3]/android.widget.TextView").click();
+
+        Pause.stop(2);
         //Get verson info
         return appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.TextView[2]").getText();
     }

@@ -33,7 +33,7 @@ public class PrivateDeployPage {
         appiumDriver.findElementById("com.hexmeet.hjt:id/login_join_meeting").click();
     }
 
-    public void setting(){
+    public void setup(){
         //LOGGER.info("Setting");
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/app_setup").click();
