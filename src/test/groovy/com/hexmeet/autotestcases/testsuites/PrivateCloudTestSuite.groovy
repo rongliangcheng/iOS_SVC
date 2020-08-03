@@ -5,9 +5,11 @@ import com.hexmeet.autotestcases.privatecloud.CallAContactInPrivate
 import com.hexmeet.autotestcases.privatecloud.GuestCall
 import com.hexmeet.autotestcases.privatecloud.JoinAReserveMeeting
 import com.hexmeet.autotestcases.privatecloud.JoinMyMeetingInPrivate
+import com.hexmeet.autotestcases.privatecloud.LockMeetingInMeetingControl
 import com.hexmeet.autotestcases.privatecloud.OperateInAGuestCall
 import com.hexmeet.autotestcases.privatecloud.OperateInAServeredMeeting
 import com.hexmeet.autotestcases.privatecloud.OperateReserveMeeting
+import com.hexmeet.autotestcases.privatecloud.PostponeMeetingInMeetingControl
 import com.hexmeet.autotestcases.privatecloud.SignIn
 
 import org.junit.runner.RunWith
@@ -21,6 +23,8 @@ import org.junit.runners.Suite
             CallAContactInPrivate,
             JoinAReserveMeeting,
             OperateReserveMeeting,
+            PostponeMeetingInMeetingControl,
+            LockMeetingInMeetingControl,
             OperateInAServeredMeeting,
             JoinMyMeetingInPrivate
 //        LoginWithWrongPassword,
