@@ -157,6 +157,7 @@ class OperateInAGuestCall extends EndpointSystemTestSpec{
         meetingOperations.sendMessage("Hello, how are you")
         Pause.stop(2)
         showPicInReport(appiumDriver,"聊天界面")
+        meetingOperations.returnFromSendMessage()
 
         then:"操作成功"
         assert true
