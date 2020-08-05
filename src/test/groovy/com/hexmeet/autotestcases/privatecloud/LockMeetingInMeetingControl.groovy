@@ -66,7 +66,7 @@ class LockMeetingInMeetingControl extends EndpointSystemTestSpec{
     }
 
 
-    def "1.清除已预约会议"() {
+    def "清除已预约会议"() {
         when: "清除hjtautotest1已预约会议"
         androidEndpoint.initialAppiumEndpointfromJson("config.json", "Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
@@ -82,7 +82,7 @@ class LockMeetingInMeetingControl extends EndpointSystemTestSpec{
         assert true
     }
 
-     def "2.创建预约会议"() {
+     def "创建预约会议"() {
          when: "创建预约会议"
          reserveMeetingPage.navigate()
          reserveMeetingPage.now();
@@ -100,7 +100,7 @@ class LockMeetingInMeetingControl extends EndpointSystemTestSpec{
          assert true
      }
 
-    def "3.锁定会议"() {
+    def "锁定会议，呼入禁止"() {
         when: "锁定会议"
         //LOGGER.info("Mute audio")
         Pause.stop(3)
@@ -118,7 +118,7 @@ class LockMeetingInMeetingControl extends EndpointSystemTestSpec{
         assert true
     }
 
-    def "4.解锁会议并入会，挂断"(){
+    def "解锁会议，入会，挂断"(){
         when:"解锁会议"
         Pause.stop(4)
         reserveMeetingPage.unlockMeeting(username)

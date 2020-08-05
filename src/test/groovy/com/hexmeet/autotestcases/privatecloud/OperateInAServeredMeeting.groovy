@@ -165,7 +165,7 @@ class OperateInAServeredMeeting extends EndpointSystemTestSpec{
         LOGGER.info("Send message to all")
         meetingOperations.sendMessage("Hello, how are you")
         Pause.stop(2)
-        showPicInReport(appiumDriver,"聊天界面")
+        showPicInReportPortrait(appiumDriver,"聊天界面")
         meetingOperations.returnFromSendMessage();
 
         then:"操作成功"

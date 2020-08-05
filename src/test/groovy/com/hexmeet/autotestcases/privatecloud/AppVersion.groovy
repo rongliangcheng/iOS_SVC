@@ -21,7 +21,7 @@ import spock.lang.Unroll
 
 import java.util.concurrent.TimeUnit
 
-@Title("App版本")
+@Title("版本升级")
 @Narrative("获取App版本")
 
 class AppVersion extends EndpointSystemTestSpec{
