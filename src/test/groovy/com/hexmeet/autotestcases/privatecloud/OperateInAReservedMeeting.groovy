@@ -154,7 +154,7 @@ class OperateInAReservedMeeting extends EndpointSystemTestSpec{
         LOGGER.info("Stop content")
         meetingOperations.stopContent()
         Pause.stop(5)
-        showPicInReportPortrait(appiumDriver,"停止共享桌面")
+        showPicInReport(appiumDriver,"停止共享桌面")
 
         then:"操作成功"
         assert  true
