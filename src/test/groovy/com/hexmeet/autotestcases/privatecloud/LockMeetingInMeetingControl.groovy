@@ -133,7 +133,7 @@ class LockMeetingInMeetingControl extends EndpointSystemTestSpec{
         Pause.stop(20)
         meetingOperations.hangupAndTerminateCall()
         Pause.stop(10)
-        showPicInReport(appiumDriver,"挂断")
+        showPicInReportPortrait(appiumDriver,"挂断")
 
         then:"操作成功"
         assert true

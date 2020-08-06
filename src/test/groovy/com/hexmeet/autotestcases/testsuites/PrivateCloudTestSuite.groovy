@@ -7,7 +7,7 @@ import com.hexmeet.autotestcases.privatecloud.JoinAReserveMeeting
 import com.hexmeet.autotestcases.privatecloud.JoinMyMeetingInPrivate
 import com.hexmeet.autotestcases.privatecloud.LockMeetingInMeetingControl
 import com.hexmeet.autotestcases.privatecloud.OperateInAGuestCall
-import com.hexmeet.autotestcases.privatecloud.OperateInAServeredMeeting
+import com.hexmeet.autotestcases.privatecloud.OperateInAReservedMeeting
 import com.hexmeet.autotestcases.privatecloud.OperateReserveMeeting
 import com.hexmeet.autotestcases.privatecloud.PostponeMeetingInMeetingControl
 import com.hexmeet.autotestcases.privatecloud.SignIn
@@ -26,7 +26,7 @@ import org.junit.runners.Suite
             OperateReserveMeeting,
             PostponeMeetingInMeetingControl,
             LockMeetingInMeetingControl,
-            OperateInAServeredMeeting,
+            OperateInAReservedMeeting,
             JoinMyMeetingInPrivate
 //        LoginWithWrongPassword,
 //        LoginWithWrongUsername

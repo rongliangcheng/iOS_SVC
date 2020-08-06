@@ -78,8 +78,9 @@ class AppVersion extends EndpointSystemTestSpec{
 
         AppBuild appBuild = new AppBuild();
         String buildVersion=appBuild.getVersion();
+        reportInfo("Jenkins Build版本信息："+appBuild.buildName)
 
-        and:"Jenkins版本信息${buildVersion}"
+        and:"Jenkins build版本信息${buildVersion}"
 
         if(version != buildVersion){
             appBuild.downloadBuildFile();

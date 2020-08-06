@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
 @Retry(delay=10000)
 
 
-class OperateInAServeredMeeting extends EndpointSystemTestSpec{
+class OperateInAReservedMeeting extends EndpointSystemTestSpec{
 
     @Shared
     AppiumDriver appiumDriver;
@@ -120,13 +120,13 @@ class OperateInAServeredMeeting extends EndpointSystemTestSpec{
         when:"点击切换摄像头按钮1次"
         LOGGER.info("Switch camera")
         meetingOperations.switchCamera()
-        Pause.stop(2)
+        Pause.stop(5)
         showPicInReport(appiumDriver,"切换摄像头1次")
 
         and:"点击切换摄像头按钮2次"
         LOGGER.info("Switch camera back")
         meetingOperations.switchCamera()
-        Pause.stop(2)
+        Pause.stop(5)
         showPicInReport(appiumDriver,"切换摄像头2次")
 
         then:"操作成功"
@@ -153,7 +153,7 @@ class OperateInAServeredMeeting extends EndpointSystemTestSpec{
         and: "停止分享"
         LOGGER.info("Stop content")
         meetingOperations.stopContent()
-        Pause.stop(2)
+        Pause.stop(5)
         showPicInReportPortrait(appiumDriver,"停止共享桌面")
 
         then:"操作成功"

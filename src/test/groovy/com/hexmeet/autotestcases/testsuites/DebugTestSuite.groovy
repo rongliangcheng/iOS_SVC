@@ -1,9 +1,7 @@
 package com.hexmeet.autotestcases.testsuites
 
-import com.hexmeet.autotestcases.privatecloud.AppVersion
-import com.hexmeet.autotestcases.privatecloud.InviteParticipantInMeetingControl
-import com.hexmeet.autotestcases.privatecloud.LockMeetingInMeetingControl
-import com.hexmeet.autotestcases.privatecloud.PostponeMeetingInMeetingControl
+
+import com.hexmeet.autotestcases.privatecloud.OperateInAReservedMeeting
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
@@ -17,10 +15,10 @@ import org.junit.runners.Suite
 //        InviteParticipantInMeetingControl
 //        PostponeMeetingInMeetingControl
 //        LockMeetingInMeetingControl
-        AppVersion
+//        AppVersion
 //          CallAContactInPrivate
 //        JoinAReserveMeeting,
-//        OperateInAReservedMeeting
+        OperateInAReservedMeeting
 ])
 class DebugTestSuite {
 }

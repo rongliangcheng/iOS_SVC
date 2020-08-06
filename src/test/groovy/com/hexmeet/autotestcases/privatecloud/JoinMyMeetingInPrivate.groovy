@@ -79,14 +79,16 @@ class JoinMyMeetingInPrivate extends EndpointSystemTestSpec{
         myMeetingPage.meetingSettings(newPassword,false,false,false,false,true)
         myMeetingPage.joinTheMeeting(newPassword)
 
-        Pause.stop(5)
+        Pause.stop(10)
         MeetingOperations meetingOperations = new MeetingOperations(appiumDriver)
         showPicInReport(appiumDriver,"私有部署中我的会议")
         Boolean isInAmeeting = meetingOperations.isInMeetingPage();
 
         and:"挂断并结束会议"
-        Pause.stop(30)
+        Pause.stop(20)
         meetingOperations.hangupAndTerminateCall()
+        Pause.stop(5)
+        showPicInReportPortrait(appiumDriver,"挂断")
 
         then:"操作成功"
         assert isInAmeeting
