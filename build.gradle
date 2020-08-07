@@ -62,51 +62,15 @@ task testDebug(type: Test) {
         include '**/DebugTestSuite.class'
     }
 
-    //systemProperty 'com.athaydes.spockframework.report.outputDir', 'build/reports/spock'
-
-//    systemProperty 'com.athaydes.spockframework.report.IReportCreator','com.athaydes.spockframework.report.internal.HtmlReportCreator'
-//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.featureReportCss','spock-feature-report.css'
-//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.summaryReportCss','spock-summary-report.css'
-//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.printThrowableStackTrace',false
-//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.inlineCss',true
-//    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.enabled',true
     systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.specSummaryNameOption','title'
-    //systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', false
-    //systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.specSummaryNameOption=class_name_and_title
-//    systemProperty  'com.athaydes.spockframework.report.IReportCreator','com.athaydes.spockframework.report.template.TemplateReportCreator'
-//    systemProperty  'com.athaydes.spockframework.report.template.TemplateReportCreator.specTemplateFile', '/templateReportCreator/spec-template.md'
-//    systemProperty  'com.athaydes.spockframework.report.template.TemplateReportCreator.reportFileExtension','md'
-//    systemProperty  'com.athaydes.spockframework.report.template.TemplateReportCreator.summaryTemplateFile','/templateReportCreator/summary-template.md'
-//    systemProperty  'com.athaydes.spockframework.report.template.TemplateReportCreator.summaryFileName','index.md'
-//    systemProperty  'com.athaydes.spockframework.report.template.TemplateReportCreator.enabled',true
 
     testLogging {
         // Show that tests are run in the command-line output
         events 'started', 'passed'
     }
-//    reports.junitXml.destination = "$buildDir/test-results/SuiteOne")
-//    reports.html.destination = "$buildDir/testreport/LoginTestSuite"
 }
 
-task testGroupOne(type: Test) {
-    //include '**/*SuiteOne.*'
-
-    filter {
-        include '**/LoginTestSuite.class'
-    }
-
-    testLogging {
-        // Show that tests are run in the command-line output
-        events 'started', 'passed'
-    }
-//    reports.junitXml.destination = "$buildDir/test-results/SuiteOne")
-//    reports.html.destination = "$buildDir/testreport/LoginTestSuite"
-}
-
-task testGroupTwo(type: Test) {
-    //include '**/*SuiteOne.*'
-
-    //useJUnitPlatform()
+task testBAT(type: Test) {
 
     filter {
         include '**/PrivateCloudTestSuite.class'
@@ -118,6 +82,35 @@ task testGroupTwo(type: Test) {
         // Show that tests are run in the command-line output
         events 'started', 'passed'
     }
-//    reports.junitXml.destination = "$buildDir/test-results/SuiteOne")
-//    reports.html.destination = "$buildDir/testreport/LoginTestSuite"
+
+}
+
+task testShortCalls(type: Test) {
+
+    filter {
+        include '**/ShortCallsTestSuite.class'
+    }
+
+    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.specSummaryNameOption','title'
+
+    testLogging {
+        // Show that tests are run in the command-line output
+        events 'started', 'passed'
+    }
+
+}
+
+task testLongCall(type: Test) {
+
+    filter {
+        include '**/LongCallTestSuite.class'
+    }
+
+    systemProperty 'com.athaydes.spockframework.report.internal.HtmlReportCreator.specSummaryNameOption','title'
+
+    testLogging {
+        // Show that tests are run in the command-line output
+        events 'started', 'passed'
+    }
+
 }

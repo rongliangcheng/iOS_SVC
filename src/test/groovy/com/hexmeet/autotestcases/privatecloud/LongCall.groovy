@@ -12,17 +12,16 @@ import org.openqa.selenium.By
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import spock.lang.Narrative
-import spock.lang.Retry
 import spock.lang.Shared
 import spock.lang.Title
 import spock.lang.Unroll
 
 import java.util.concurrent.TimeUnit
 
-@Title("短呼叫")
-@Narrative("短呼叫500次")
+@Title("长呼叫")
+@Narrative("长时间呼叫")
 
-class ShortCalls extends EndpointSystemTestSpec{
+class LongCall extends EndpointSystemTestSpec{
 
     @Shared
     AppiumDriver appiumDriver;
@@ -49,7 +48,7 @@ class ShortCalls extends EndpointSystemTestSpec{
     MeetingOperations meetingOperations
 
     @Shared
-    int arraySize=500
+    int loopCounter=5
 
     @Shared
     def nums;
@@ -58,17 +57,10 @@ class ShortCalls extends EndpointSystemTestSpec{
     File psFile
 
     @Shared
-    def outputPath="D:\\Dev\\workspace\\Jenkins\\workspace\\HJT_SVC_Android\\build\\psfile.txt"
+    def outputPath="D:\\Dev\\workspace\\Jenkins\\workspace\\HJT_SVC_Android\\build\\psfile_long.txt"
 
     def setupSpec(){
         log.info("Startup")
-
-        nums = new int[arraySize]
-        def count=0;
-        arraySize.times{
-            nums[count] = count;
-            count++;
-        }
 
         psFile = new File(outputPath)
         psFile.write("")
@@ -83,9 +75,9 @@ class ShortCalls extends EndpointSystemTestSpec{
         reserveMeetingPage.navigate()
         reserveMeetingPage.now();
         reserveMeetingPage.changeDuration();
+        reserveMeetingPage.addParticipants("hjtautotest2")
         reserveMeetingPage.finish();
         reserveMeetingPage.backAfterReserver()
-
         meetingOperations = new MeetingOperations(appiumDriver)
     }
 
@@ -99,41 +91,34 @@ class ShortCalls extends EndpointSystemTestSpec{
 
     def cleanup() {
 
-        if (UIElement.byElementIsExist(appiumDriver, By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]"))) {
-            appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View/android.view.View").click();
-        }
-
-        if (meetingOperations.isInMeetingPage()) {
-            meetingOperations.hangupAndLeave()
-        }
-
-        Map<String,Object> args = new HashMap<>();
-        args.put("command","ps -e")
-        args.put("args","|grep hexmeet.hjt\$")
-        String psResult = (String)appiumDriver.executeScript("mobile:shell",args);
-
-        log.info(psResult)
-
-        psFile.append("\n"+psResult)
-
     }
 
-    @Unroll
-    def "短呼叫#counter"(){
+    def "长时间呼叫"(){
         when:"呼叫"
         Pause.stop(2)
         reserveMeetingPage.joinReservedMeeting(username);
         Pause.stop(10)
 
-        then:"呼叫成功"
-        if( counter == arraySize-1 ){
-            meetingOperations.hangupAndTerminateCall()
-        } else {
-            meetingOperations.hangupAndLeave()
+        and:"收集cpu,memory信息"
+        Map<String,Object> args = new HashMap<>();
+        args.put("command"," ps -eO PCPU ")
+        args.put("args"," |grep hexmeet.hjt\$")
+
+        int count=0;
+        while( count < loopCounter ){
+            String psResult = (String)appiumDriver.executeScript("mobile:shell",args);
+            log.info(psResult)
+            psFile.append("\n"+psResult)
+            Pause.stop(60)
+            count++;
         }
 
-        where:"counter"
-        counter << nums
+        and:"挂断终结"
+        meetingOperations.hangupAndTerminateCall()
+
+        then:"longall结束"
+        assert true
+
     }
 
 }
