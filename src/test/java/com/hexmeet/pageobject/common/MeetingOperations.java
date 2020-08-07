@@ -24,7 +24,7 @@ public class MeetingOperations {
     public void hangupAndLeave(){
         Pause.stop(0.5);
         touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.ImageView").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_hangup").click();
         Pause.stop(2);
         appiumDriver.findElementById("com.hexmeet.hjt:id/meeting_ok").click();
     }
@@ -32,37 +32,25 @@ public class MeetingOperations {
     public void hangupAndTerminateCall(){
         Pause.stop(0.5);
         touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.ImageView").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_hangup").click();
         Pause.stop(2);
         appiumDriver.findElementById("com.hexmeet.hjt:id/meeting_callend").click();
     }
 
     public void switchCamera(){
-//        Pause.stop(0.5);
-//        touchScreenToShowButton();
-//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.ImageView").click();
-        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.ImageView");
+        tryAfterFailById("com.hexmeet.hjt:id/toolbar_switch_camera");
     }
 
     public void muteUmuteAudio(){
-//        Pause.stop(0.5);
-//        touchScreenToShowButton();
-//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.ImageView").click();
-        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.ImageView");
+        tryAfterFailById("com.hexmeet.hjt:id/toolbar_local_mute");
     }
 
     public void muteUmuteCamera(){
-//        Pause.stop(0.5);
-//        touchScreenToShowButton();
-//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.ImageView").click();
-        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.ImageView");
+        tryAfterFailById("com.hexmeet.hjt:id/toolbar_local_camera");
     }
 
     public void meetingManagement(){
-//        Pause.stop(0.5);
-//        touchScreenToShowButton();
-//        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.ImageView").click();
-        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.ImageView");
+        tryAfterFailById("com.hexmeet.hjt:id/toolbar_conference");
     }
 
     //ToDo
@@ -71,7 +59,7 @@ public class MeetingOperations {
     public void shareContentAndCancel(){
         Pause.stop(0.5);
         touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.ImageView").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_layout_share").click();
         Pause.stop(0.5);
         appiumDriver.findElementById("android:id/button2").click();
     }
@@ -79,7 +67,7 @@ public class MeetingOperations {
     public void shareContent(){
         Pause.stop(0.5);
         touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.ImageView").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_layout_share").click();
         Pause.stop(0.5);
         appiumDriver.findElementById("android:id/button1").click();
     }
@@ -97,7 +85,7 @@ public class MeetingOperations {
     public void sendMessage(String string){
         Pause.stop(0.5);
         touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[5]/android.widget.ImageView").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_layout_chat").click();
         Pause.stop(0.5);
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.EditText").sendKeys(string);
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.Button").click();
@@ -110,13 +98,13 @@ public class MeetingOperations {
     }
 
     public void switchLayout(){
-        tryAfterFailByXpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[6]/android.widget.ImageView");
+        tryAfterFailById("com.hexmeet.hjt:id/toolbar_layout_mode");
     }
 
     public void showHideLocalPreview(){
         Pause.stop(0.5);
         touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[7]/android.widget.ImageView").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_more").click();
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/switch_localview").click();
     }
@@ -124,7 +112,7 @@ public class MeetingOperations {
     public void switchToAudioOnly(){
         Pause.stop(0.5);
         touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[7]/android.widget.ImageView").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_more").click();
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/switch_vadio_mode").click();
     }
@@ -138,7 +126,7 @@ public class MeetingOperations {
     private void goIntoMeetingControl(){
         Pause.stop(1);
         touchScreenToShowButton();
-        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.ImageView").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_conference").click();
     }
 
     public void inviteParticipantInAMeeting(String username){
@@ -206,7 +194,7 @@ public class MeetingOperations {
 
     public boolean isInMeetingPage(){
         Pause.stop(0.5);
-        return UIElement.byElementIsExist(appiumDriver,xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.view.View[1]"));
+        return UIElement.byElementIsExist(appiumDriver,xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.view.View[1]"));
     }
 
     public boolean hasTwoParticipants(){
@@ -216,7 +204,7 @@ public class MeetingOperations {
 
 
     private void touchScreenToShowButton(){
-        String mainView="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.view.View[1]";
+        String mainView="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.view.View[1]";
         if(!UIElement.byElementIsExist(appiumDriver,id("com.hexmeet.hjt:id/timer_chronometer"))){
             appiumDriver.findElementByXPath(mainView).click();
         } else {
@@ -239,5 +227,16 @@ public class MeetingOperations {
         }
     }
 
+    private void tryAfterFailById(String Id){
+        try{
+            Pause.stop(2);
+            touchScreenToShowButton();
+            appiumDriver.findElementById(Id).click();
+        } catch (Exception e){
+            Pause.stop(2);
+            touchScreenToShowButton();
+            appiumDriver.findElementById(Id).click();
+        }
+    }
 
 }
