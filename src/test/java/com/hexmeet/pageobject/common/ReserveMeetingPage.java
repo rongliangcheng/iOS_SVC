@@ -5,11 +5,14 @@ import com.hexmeet.Utility.UIElement;
 import com.hexmeet.pageobject.common.meetingpage.MeetingMainPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.slf4j.Logger;
+
+import java.time.Duration;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -46,14 +49,26 @@ public class ReserveMeetingPage {
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]/android.view.View[1]").click();
     }
 
-    public void duration(){
-        Pause.stop(0.5);
-        appiumDriver.findElementByXPath("").click();
-        TouchAction touchAction = new TouchAction(appiumDriver);
+    public void changeDuration(){
 
-        //        touchAction.perform().press(new PointOption())
-        //        appiumDriver.
+        //调出时长页面
+        Pause.stop(0.5);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]").click();
+
+        //设定时间
+        Pause.stop(1);
+        TouchAction touchAction = new TouchAction(appiumDriver);
+        Point pointStart = new Point(260,1950);
+        Point pointEnd = new Point(260,1350);
+        touchAction.press(PointOption.point(pointStart)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(pointEnd)).release().perform();
+        Pause.stop(1);
+        touchAction.press(PointOption.point(pointStart)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(pointEnd)).release().perform();
+
+        //确定
+        Pause.stop(0.5);
+        appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[3]/android.view.View[1]/android.view.View[2]").click();
     }
+
 
     public boolean containStringInDuration(String username,String string){
         findReservedMeeting(username);
@@ -114,6 +129,7 @@ public class ReserveMeetingPage {
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View").click();
     }
 
+
     private void goToMeetingControl(){
         Pause.stop(0.5);
         appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.widget.ListView/android.view.View[2]/android.view.View[2]").click();
@@ -136,7 +152,7 @@ public class ReserveMeetingPage {
         TouchAction touchAction = new TouchAction(appiumDriver);
         Point pointStart = new Point(300,1900);
         Point pointEnd = new Point(300,400);
-        touchAction.press(PointOption.point(pointStart)).moveTo(PointOption.point(pointEnd)).perform();
+        touchAction.press(PointOption.point(pointStart)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(pointEnd)).perform();
         Pause.stop(1);
         //appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.widget.ListView/android.view.View").click();
         //appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[-1]/android.view.View[4]/android.widget.ListView/android.view.View").click();

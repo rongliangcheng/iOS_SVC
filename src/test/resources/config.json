@@ -5,7 +5,7 @@
     "deviceName": "c52ab55a",
     "appPackage": "com.hexmeet.hjt",
     "appActivity": ".SplashActivity",
-    "newCommandTimeout": 6000
+    "newCommandTimeout": 900000
   },
   "Android_3": {
     "platformName": "Android",

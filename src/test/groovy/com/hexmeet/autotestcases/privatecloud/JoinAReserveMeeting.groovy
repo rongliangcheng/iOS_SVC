@@ -71,7 +71,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
 
     def "创建即时会议并加入"(){
 
-        when:"创建一即时会议"
+        when:"创建一即时会议并改变时长"
         androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
         androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
         appiumDriver = androidEndpoint.getAppiumEndpointDriver()
@@ -81,6 +81,7 @@ class JoinAReserveMeeting extends EndpointSystemTestSpec {
         ReserveMeetingPage reserveMeetingPage = new ReserveMeetingPage(appiumDriver);
         reserveMeetingPage.navigate()
         reserveMeetingPage.now();
+        reserveMeetingPage.changeDuration()
         reserveMeetingPage.finish();
         reserveMeetingPage.backAfterReserver()
 
