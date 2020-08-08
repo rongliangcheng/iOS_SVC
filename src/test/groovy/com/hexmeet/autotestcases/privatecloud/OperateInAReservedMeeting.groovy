@@ -189,6 +189,20 @@ class OperateInAReservedMeeting extends EndpointSystemTestSpec{
         assert true
     }
 
+    def "改名"(){
+        when:"更改名字"
+        LOGGER.info("update user name")
+        meetingOperations.changeParticipantName("AAAAFFFF")
+        Pause.stop(10)
+        showPicInReport(appiumDriver,"更名为AAAAFFFF")
+
+        and:"核对更改名字"
+        String displayName = meetingOperations.getDisplayName()
+
+        then:"更名成功"
+        assert displayName.equals("AAAAFFFF")
+    }
+
     def "操作近端预览"(){
         when:"点击取消近端预览按钮"
         LOGGER.info("Mute local preview")

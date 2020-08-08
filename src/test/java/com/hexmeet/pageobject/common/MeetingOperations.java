@@ -120,13 +120,24 @@ public class MeetingOperations {
     public void switchBackToAVmode(){
         Pause.stop(0.5);
         appiumDriver.findElementById("com.hexmeet.hjt:id/audio_mode_btn").click();
-
     }
 
-    private void goIntoMeetingControl(){
+    public void changeParticipantName(String participantName){
         Pause.stop(1);
         touchScreenToShowButton();
-        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_conference").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_more").click();
+        Pause.stop(0.5);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/update_user_name").click();
+        Pause.stop(0.5);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/update_username").sendKeys(participantName);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/meeting_ok").click();
+    }
+
+
+
+    public String getDisplayName(){
+        Pause.stop(1);
+        return appiumDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/android.widget.RelativeLayout[2]/android.widget.LinearLayout/android.widget.TextView").getText();
     }
 
     public void inviteParticipantInAMeeting(String username){
@@ -200,6 +211,12 @@ public class MeetingOperations {
     public boolean hasTwoParticipants(){
         Pause.stop(0.5);
         return UIElement.byElementIsExist(appiumDriver,xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.ImageView"));
+    }
+
+    private void goIntoMeetingControl(){
+        Pause.stop(1);
+        touchScreenToShowButton();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_conference").click();
     }
 
 

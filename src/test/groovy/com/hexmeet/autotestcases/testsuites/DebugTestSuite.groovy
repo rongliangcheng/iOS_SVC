@@ -18,11 +18,11 @@ import org.junit.runners.Suite
 //        InviteParticipantInMeetingControl
 //        PostponeMeetingInMeetingControl
 //        LockMeetingInMeetingControl
-LongCall
+//LongCall
 //          CallAContactInPrivate
 //        JoinAReserveMeeting,
 //        AppVersion,
-//        OperateInAReservedMeeting,
+        OperateInAReservedMeeting
 //        ShortCalls
 ])
 class DebugTestSuite {

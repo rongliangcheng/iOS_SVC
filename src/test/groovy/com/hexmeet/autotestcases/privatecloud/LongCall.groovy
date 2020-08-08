@@ -48,7 +48,7 @@ class LongCall extends EndpointSystemTestSpec{
     MeetingOperations meetingOperations
 
     @Shared
-    int loopCounter=5
+    int loopCounter=600
 
     @Shared
     def nums;
