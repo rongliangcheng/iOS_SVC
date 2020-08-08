@@ -4,6 +4,7 @@ import com.hexmeet.autotestcases.TestSpec.EndpointSystemTestSpec
 import com.hexmeet.Utility.Pause
 import com.hexmeet.Utility.UIElement
 import com.hexmeet.appiumendpoint.AppiumEndpoint
+import com.hexmeet.pageobject.common.MeetingOperations
 import com.hexmeet.pageobject.common.ReserveMeetingPage
 import com.hexmeet.pageobject.common.CallAContactInStructure
 import com.hexmeet.pageobject.startup.deploytype.privatedeploy.signin.userprivatemainPage.UserPrivateMainPage
@@ -91,8 +92,7 @@ class CallAContactInPrivate extends EndpointSystemTestSpec{
         Pause.stop(30)
 
         then:"呼叫成功"
-        assert  UIElement.byElementIsExist(appiumDriver, By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.view.View[1]"))
-
+        assert  new MeetingOperations(appiumDriver).isInMeetingPage()
     }
 
 

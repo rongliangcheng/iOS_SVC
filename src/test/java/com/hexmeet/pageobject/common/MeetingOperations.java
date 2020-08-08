@@ -26,7 +26,7 @@ public class MeetingOperations {
         touchScreenToShowButton();
         appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_hangup").click();
         Pause.stop(2);
-        appiumDriver.findElementById("com.hexmeet.hjt:id/meeting_ok").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/meeting_callend").click();
     }
 
     public void hangupAndTerminateCall(){
@@ -34,7 +34,7 @@ public class MeetingOperations {
         touchScreenToShowButton();
         appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_hangup").click();
         Pause.stop(2);
-        appiumDriver.findElementById("com.hexmeet.hjt:id/meeting_callend").click();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/meeting_ok").click();
     }
 
     public void switchCamera(){
