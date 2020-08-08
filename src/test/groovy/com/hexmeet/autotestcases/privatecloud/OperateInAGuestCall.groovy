@@ -231,7 +231,7 @@ class OperateInAGuestCall extends EndpointSystemTestSpec{
     def "挂断并结束会议"(){
         when:"挂断并结束会议"
         LOGGER.info("Hangup and terminate the call")
-        meetingOperations.hangupAndLeave()
+        meetingOperations.persistentCallHangupAndLeave()
         Pause.stop(5)
 
         and:"抓屏"
