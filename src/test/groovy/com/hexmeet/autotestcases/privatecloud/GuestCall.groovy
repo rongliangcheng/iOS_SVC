@@ -70,7 +70,7 @@ class GuestCall extends EndpointSystemTestSpec{
 
         and: "挂断并离开会议"
         MeetingOperations meetingOperations = new MeetingOperations(appiumDriver)
-        meetingOperations.hangupAndLeave()
+        meetingOperations.persistentCallHangupAndLeave()
 
         Pause.stop(5)
 
@@ -89,7 +89,7 @@ class GuestCall extends EndpointSystemTestSpec{
 
         and: "挂断并离开"
         MeetingOperations meetingOperations = new MeetingOperations(appiumDriver)
-        meetingOperations.hangupAndLeave()
+        meetingOperations.persistentCallHangupAndLeave()
 
         Pause.stop(5)
 

@@ -21,6 +21,14 @@ public class MeetingOperations {
         this.appiumDriver = appiumDriver;
     }
 
+    public void persistentCallHangupAndLeave(){
+        Pause.stop(0.5);
+        touchScreenToShowButton();
+        appiumDriver.findElementById("com.hexmeet.hjt:id/toolbar_hangup").click();
+        Pause.stop(2);
+        appiumDriver.findElementById("com.hexmeet.hjt:id/meeting_ok").click();
+    }
+
     public void hangupAndLeave(){
         Pause.stop(0.5);
         touchScreenToShowButton();
