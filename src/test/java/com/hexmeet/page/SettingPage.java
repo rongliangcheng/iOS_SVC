@@ -2,7 +2,6 @@ package com.hexmeet.page;
 
 import com.hexmeet.utility.Pause;
 import io.appium.java_client.AppiumDriver;
-import sun.jvm.hotspot.types.basic.BasicOopField;
 
 public class SettingPage {
     AppiumDriver driver;
