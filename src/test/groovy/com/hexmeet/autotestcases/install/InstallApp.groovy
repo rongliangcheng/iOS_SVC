@@ -1,9 +1,9 @@
 package com.hexmeet.autotestcases.install
 
-import com.hexmeet.appiumendpoint.AppiumEndpoint
+import com.hexmeet.appiumendpoint.IOSAppiumEndpoint
 import com.hexmeet.autotestcases.TestSpec.EndpointSystemTestSpec
 import com.hexmeet.base.JsonConfigSingleton
-import com.hexmeet.pageobject.startup.UIStart
+import com.hexmeet.page.startup.UIStart
 import io.appium.java_client.AppiumDriver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 class InstallApp extends EndpointSystemTestSpec{
     @Shared
-    AppiumEndpoint androidEndpoint = new AppiumEndpoint()
+    IOSAppiumEndpoint androidEndpoint = new IOSAppiumEndpoint()
 
     @Shared
     Logger log = LoggerFactory.getLogger(this.getClass())

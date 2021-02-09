@@ -1,6 +1,6 @@
 package com.hexmeet.autotestcases.login
 
-import com.hexmeet.Utility.Pause
+import com.hexmeet.utility.Pause
 import com.hexmeet.autotestcases.TestSpec.EndpointSystemTestSpec
 import io.appium.java_client.AppiumDriver
 import org.openqa.selenium.remote.DesiredCapabilities

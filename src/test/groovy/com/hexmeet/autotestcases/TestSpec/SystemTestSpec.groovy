@@ -1,7 +1,7 @@
 package com.hexmeet.autotestcases.TestSpec
 
 
-import com.hexmeet.Utility.Pause
+import com.hexmeet.utility.Pause
 import io.appium.java_client.AppiumDriver
 import org.apache.commons.io.FileUtils
 import org.openqa.selenium.OutputType

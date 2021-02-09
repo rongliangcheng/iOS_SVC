@@ -1,15 +1,14 @@
 package com.hexmeet.autotestcases.privatecloud
 
+
 import com.hexmeet.autotestcases.TestSpec.EndpointSystemTestSpec
-import com.hexmeet.Utility.Pause
-import com.hexmeet.Utility.UIElement
-import com.hexmeet.appiumendpoint.AppiumEndpoint
-import com.hexmeet.pageobject.common.MeetingOperations
-import com.hexmeet.pageobject.common.ReserveMeetingPage
-import com.hexmeet.pageobject.common.CallAContactInStructure
-import com.hexmeet.pageobject.startup.deploytype.privatedeploy.signin.userprivatemainPage.UserPrivateMainPage
+import com.hexmeet.page.FavoriteContactPage
+import com.hexmeet.page.MeetingOperationPage
+import com.hexmeet.page.PageNavigate
+import com.hexmeet.utility.Pause
+import com.hexmeet.appiumendpoint.IOSAppiumEndpoint
+
 import io.appium.java_client.AppiumDriver
-import org.openqa.selenium.By
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import spock.lang.Narrative
@@ -29,13 +28,11 @@ class CallAContactInPrivate extends EndpointSystemTestSpec{
     AppiumDriver appiumDriver;
 
     @Shared
-    AppiumEndpoint androidEndpoint = new AppiumEndpoint();
+    IOSAppiumEndpoint iOSAppiumEndpoint = new IOSAppiumEndpoint();
 
     @Shared
     Logger log = LoggerFactory.getLogger(this.getClass())
 
-    @Shared
-    ReserveMeetingPage reserveMeetingPage
 
     @Shared
     String serverAddress="cloudbeta.hexmeet.com"
@@ -46,10 +43,15 @@ class CallAContactInPrivate extends EndpointSystemTestSpec{
     @Shared
     String password="123456"
 
+    @Shared
+    String favoriteContact="RongliangVE210"
+
     def setupSpec(){
 
         LOGGER.info("Setup")
-
+        iOSAppiumEndpoint.initialAppiumEndpointfromJson("config.json","iOS_1")
+        iOSAppiumEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
+        appiumDriver = iOSAppiumEndpoint.getAppiumEndpointDriver()
     }
 
     def cleanupSpec(){
@@ -68,32 +70,56 @@ class CallAContactInPrivate extends EndpointSystemTestSpec{
 
     }
 
-    @Retry(delay = 30000)
-    def "呼叫组织架构中的用户"(){
-        when:"初始化并登录"
-        androidEndpoint.initialAppiumEndpointfromJson("config.json","Android_1")
-        androidEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
-        appiumDriver = androidEndpoint.getAppiumEndpointDriver()
+    @Retry(delay = 3000)
+    def "呼叫常用联系人中的用户"(){
 
-        UserPrivateMainPage userPrivateMainPage = new UserPrivateMainPage(appiumDriver)
-        userPrivateMainPage.navigate(serverAddress,accout,password)
-        userPrivateMainPage.contacts()
+        when:"直接点击常用联系人"
+        PageNavigate pageNavigate = new PageNavigate(appiumDriver)
+        pageNavigate.navigate_to_contact()
 
-        and:"在公司的组织架构中找到用户"
-        CallAContactInStructure callAContactInStructure = new CallAContactInStructure(appiumDriver)
-        callAContactInStructure.findAContactInStructure("hjtautotest2")
-        Pause.stop(3)
-        showPicInReportPortrait(appiumDriver,"找到用户");
-
-        and:"呼叫用户"
-        callAContactInStructure.callTheContact()
-        Pause.stop(5)
-        showPicInReport(appiumDriver,"呼叫用户");
-        Pause.stop(30)
+        and:"呼叫"
+        FavoriteContactPage favoriteContactPage = new FavoriteContactPage(appiumDriver)
+        favoriteContactPage.favorite_contact(favoriteContact)
 
         then:"呼叫成功"
-        assert  new MeetingOperations(appiumDriver).isInMeetingPage()
+        assert true
+
+
     }
+
+    @Retry()
+    def "挂断"(){
+        when:"挂断呼叫"
+        Pause.stop(30)
+        MeetingOperationPage meetingOperationPage = new MeetingOperationPage(appiumDriver)
+        meetingOperationPage.hangup()
+
+        then:"呼叫成功"
+        assert  true
+    }
+
+//    @Retry(delay = 30000)
+//    def "查找并呼叫常用联系人中的用户"(){
+//        when:"初始化并登录"
+//        iOSAppiumEndpoint.initialAppiumEndpointfromJson("config.json","iOS_1")
+//        iOSAppiumEndpoint.getAppiumEndpointDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS)
+//        appiumDriver = iOSAppiumEndpoint.getAppiumEndpointDriver()
+//
+//        and:"直接点击常用联系人"
+//        PageNavigate pageNavigate = new PageNavigate(appiumDriver)
+//        pageNavigate.navigate_to_contact()
+//
+//        FavoriteContactPage favoriteContactPage = new FavoriteContactPage(appiumDriver)
+//        favoriteContactPage.find_favorite_contact(favoriteContact)
+//
+//        and:"挂断呼叫"
+//        Pause.stop(30)
+//        MeetingOperationPage meetingOperationPage = new MeetingOperationPage(appiumDriver)
+//        meetingOperationPage.hangup()
+//
+//        then:"呼叫成功"
+//        assert  true
+//    }
 
 
 }

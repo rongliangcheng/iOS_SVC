@@ -14,7 +14,7 @@
     "appPackage": "com.hexmeet.hjt",
     "appActivity": ".SplashActivity",
     "skipServerInstallation": true,
-    "skipDeviceInitialization":true,
+    "skipDeviceInitialization":true
   },
   "Android_2": {
     "platformName": "Android",
@@ -28,10 +28,14 @@
   },
   "iOS_1":{
     "platformName": "iOS",
-    "platformVersion": "13.0.0",
-    "deviceName": "564b35554c573398",
-    "appPackage": "com.hexmeet.hjt",
-    "appActivity": ".SplashActivity"
+    "platformVersion": "14.4",
+    "automationName": "XCUITest",
+    "bundleId": "com.hexmeet.hjt",
+    "deviceName": "iOS",
+    "uuid": "b742a8f990840f2142dfd180f5a426c77c051e5c",
+    "xcodeOrgId": "W269R3L92R",
+    "xcodeSigningId": "iPhone Developer",
+    "udid": "auto"
   },
   "Android_1_Install": {
     "deviceId": "564b35554c573398",
