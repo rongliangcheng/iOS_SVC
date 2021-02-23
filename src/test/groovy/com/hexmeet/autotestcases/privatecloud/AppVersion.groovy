@@ -59,7 +59,7 @@ class AppVersion extends EndpointSystemTestSpec{
 
     def "获取版本"(){
         when:"到达about页面"
-        Pause.stop(10)
+        Pause.stop(20)
         PageNavigateOperations pageNavigateOperations = new PageNavigateOperations(appiumDriver)
         pageNavigateOperations.navigate_to_about()
 
