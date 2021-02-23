@@ -67,6 +67,10 @@ class AppVersion extends EndpointSystemTestSpec{
         AboutPage aboutPage = new AboutPage(appiumDriver)
         println(aboutPage.getVersion())
 
+        def filePath="/Users/hexmeetqa/.jenkins/workspace/iOS_SVC/build/version.txt"
+        File file = new File(filePath)
+        file.text=aboutPage.getVersion()
+
         then:"版本获取成功"
         assert true
 

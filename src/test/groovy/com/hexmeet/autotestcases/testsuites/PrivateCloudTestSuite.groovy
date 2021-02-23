@@ -24,17 +24,17 @@ import org.junit.runners.Suite
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses([
-        OperateInAGuestCall,
-        GuestCall,
-        SignIn,
+//        OperateInAGuestCall,
+//        GuestCall,
+//        SignIn,
         AppVersion,
-        AccountInfo,
-        CallAContactInPrivate,
-        JoinMyMeetingInPrivate,
-        JoinMyMeetingInPrivateAVEscalation,
-        JoinMyMeetingInPrivateMatrix,
-        JoinAReserveMeeting,
-        OperateInAReservedMeeting
+//        AccountInfo,
+//        CallAContactInPrivate,
+//        JoinMyMeetingInPrivate,
+//        JoinMyMeetingInPrivateAVEscalation,
+//        JoinMyMeetingInPrivateMatrix,
+//        JoinAReserveMeeting,
+//        OperateInAReservedMeeting
 ])
 
 class PrivateCloudTestSuite {
