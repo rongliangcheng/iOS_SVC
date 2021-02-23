@@ -39,7 +39,7 @@ class AppVersion extends EndpointSystemTestSpec{
         appiumDriver = iosEndpoint.getAppiumEndpointDriver()
 
         PrivateDeployLoginPage privateDeployLoginPage = new PrivateDeployLoginPage(appiumDriver);
-        if( privateDeployLoginPage.onPrivateDeployLoginPage){
+        if( privateDeployLoginPage.isOnPrivateDeployLoginPage() ){
             privateDeployLoginPage.login_submit()
         }
     }

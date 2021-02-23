@@ -59,7 +59,7 @@ public class PrivateDeployLoginPage {
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             return false;
         }
-        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return true;
     }
 }
